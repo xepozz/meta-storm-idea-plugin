@@ -62,7 +62,7 @@ Meta Storm searches for any files with the `.meta-storm.xml` at the end of file 
 ###### Empty configuration file
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
-<meta-storm>
+<meta-storm xmlns="meta-storm">
     <definitions>
     </definitions>
 </meta-storm>
