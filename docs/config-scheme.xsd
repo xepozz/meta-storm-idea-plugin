@@ -1,0 +1,82 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="meta-storm"
+>
+    <xs:element name="meta-storm">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="definitions">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="files" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="directoryProcessors" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="processor-append"
+                                                                name="append" minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xs:element type="processor-regexp"
+                                                                name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="className" use="required"/>
+                                    <xs:attribute type="xs:string" name="methodName" use="required"/>
+                                    <xs:attribute type="xs:nonNegativeInteger" name="argumentIndex" use="required"/>
+                                    <xs:attribute type="xs:string" name="fileExt" use="required"/>
+                                    <xs:attribute type="related" name="relatedTo" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="properties" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="className" use="required"/>
+                                            <xs:attribute type="xs:string" name="methodName" use="required"/>
+                                            <xs:attribute type="xs:nonNegativeInteger" name="argumentIndex"
+                                                          use="required"/>
+                                            <xs:attribute type="related" name="relatedTo" use="required"/>
+                                            <xs:attribute type="xs:nonNegativeInteger"
+                                                          name="relatedArgumentIndex" use="required"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="related">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="file"/>
+            <xs:enumeration value="directory"/>
+            <xs:enumeration value="project"/>
+            <xs:enumeration value="argument"/>
+            <xs:enumeration value="variable"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- processors -->
+
+    <xs:complexType name="processor-append">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="value"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="processor-regexp">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="from" use="required"/>
+                <xs:attribute type="xs:string" name="to" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
