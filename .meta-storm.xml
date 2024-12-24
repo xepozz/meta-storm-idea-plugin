@@ -7,7 +7,6 @@
                 argumentIndex="0"
                 fileExt=""
                 relatedTo="directory"/>
-
         <files
                 className="\Renderer"
                 methodName="render"
@@ -35,5 +34,29 @@
                 relatedTo="variable"
                 relatedArgumentIndex="0"
         />
+        <collection
+                className="\Framework\Container"
+                methodName="getCommand"
+                argumentIndex="0"
+                collectionName="commands"
+        />
+        <collection
+                className="\Framework\Container"
+                methodName="getTag"
+                argumentIndex="0"
+                collectionName="tags"
+        />
     </definitions>
+    <collections>
+        <attribute
+                name="commands"
+                className="\Framework\Command"
+                argumentIndex="0"
+        />
+        <attribute
+                name="tags"
+                className="\Framework\Tag"
+                argumentIndex="0"
+        />
+    </collections>
 </meta-storm>
