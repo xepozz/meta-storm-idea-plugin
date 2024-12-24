@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <files className="\Controller" methodName="render" argumentIndex="0" fileExt="" relatedTo="directory" />
+        <files
+                className="\Controller"
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+
+        <files
+                className="\Renderer"
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+
         <properties
                 className="\ArrayHelper"
                 methodName="getPropertyValue"
