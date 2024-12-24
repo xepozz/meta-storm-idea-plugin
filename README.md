@@ -12,6 +12,8 @@ Save time, avoid mistakes, and navigate your projects effortlessly. 💻✨
 
 ## Quick start
 
+Short Youtube demo: https://youtu.be/fFGrRNFDZIg
+
 1. Create a file with the name `.meta-storm.xml` at any place in your project with the following content:
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
