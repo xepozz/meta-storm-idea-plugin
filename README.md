@@ -1,5 +1,11 @@
 # 🌟 **MetaStorm** – Smarter References and Autocompletion for PHPStorm! 🚀
 
+![Downloads](https://img.shields.io/jetbrains/plugin/d/26121-meta-storm)
+![Rating](https://img.shields.io/jetbrains/plugin/r/rating/26121-meta-storm)
+![Version](https://img.shields.io/jetbrains/plugin/v/26121-meta-storm)
+
+Plugin on Jetbrains Marketplace: https://plugins.jetbrains.com/plugin/26121-meta-storm/
+
 **MetaStorm** is the ultimate tool for developers who want their IDE to understand their code on a deeper level. 
 With a single customizable rule, you can unlock both **references** and **autocompletion** simultaneously! 
 Save time, avoid mistakes, and navigate your projects effortlessly. 💻✨
