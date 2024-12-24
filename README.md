@@ -110,8 +110,9 @@ Once you configured a method plugin activate the following features:
 
 #### Files definitions
 
-- `className`: **required**
+- `className`: **optional**
   - Should be a FQN classname, e.g. `\App\Helper\Arrays`
+  - Or absent if `methodName` is a function in global scope
 - `methodName`: **required**
   - Should be desired method name without parenthesis: `getPropertyValue`
 - `argumentIndex`: **required**

@@ -15,6 +15,12 @@
                 fileExt=""
                 relatedTo="directory"/>
 
+        <files
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+
         <properties
                 className="\ArrayHelper"
                 methodName="getPropertyValue"
