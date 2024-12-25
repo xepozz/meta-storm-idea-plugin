@@ -27,13 +27,6 @@
                 relatedTo="argument"
                 relatedArgumentIndex="0"
         />
-        <properties
-                className="\User"
-                methodName="label"
-                argumentIndex="0"
-                relatedTo="variable"
-                relatedArgumentIndex="0"
-        />
         <collection
                 className="\Framework\Container"
                 methodName="getCommand"

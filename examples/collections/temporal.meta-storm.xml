@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <collection
+                className="\Framework\WorkflowClient"
+                methodName="newUntypedWorkflowStub"
+                argumentIndex="0"
+                collectionName="workflows_methods"
+        />
+        <collection
+                className="\Framework\WorkflowClient"
+                methodName="newWorkflow"
+                argumentIndex="0"
+                collectionName="workflows_classes"
+        />
+    </definitions>
+    <collections>
+        <attributeArgument
+                name="workflows_methods"
+                className="\Framework\WorkflowMethod"
+                argumentIndex="0"
+        />
+        <attributeClass
+                name="workflows_classes"
+                className="\Framework\WorkflowInterface"
+        />
+    </collections>
+</meta-storm>
