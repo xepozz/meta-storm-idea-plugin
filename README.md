@@ -96,7 +96,9 @@ Once you configured a method plugin activate the following features:
 - Autocompletion
   - When you start typing inside the string literal IDE suggest you necessary endings
 
-#### Properties definitions
+#### Properties definitions (\<properties\>)
+
+Provide properties of the related class.
 
 - `className`: **required**
   - Should be a FQN classname, e.g. `\App\Helper\Arrays`
@@ -110,10 +112,12 @@ Once you configured a method plugin activate the following features:
   - Values and meanings are described [here](#relatedto)
 
 
-#### Files definitions
+#### Files definitions (\<files\>)
+
+Provide files and directories at the related filesystem point.
 
 - `className`: **optional**
-  - Should be a FQN classname, e.g. `\App\Helper\Arrays`
+  - Should be a fully qualified classname, e.g. `\App\Helper\Arrays`
   - Or absent if `methodName` is a function in global scope
 - `methodName`: **required**
   - Should be desired method name without parenthesis: `getPropertyValue`
@@ -128,6 +132,48 @@ Once you configured a method plugin activate the following features:
   - Values and meanings are described [here](#relatedto)
 
 `directoryProcessors` is applied here as the children element. See more.
+
+#### Collection definitions (\<collection\>)
+
+Provide value from the [defined collections](#collections)
+
+- `className`: **optional**
+  - Should be a fully qualified classname, e.g. `\App\Helper\Arrays`
+  - Or absent if `methodName` is a function in global scope
+- `methodName`: **required**
+  - Should be desired method name without parenthesis: `getPropertyValue`
+- `argumentIndex`: **required**
+  - Numeric position of the interactive element in the parameters list
+  - Zero-based
+- `collectionName`: **required**
+  - Collection name defined at `<collections>` section
+
+### Collections
+
+Using collections helps to first define a set of values, prepare, filter and then use as definitions.
+
+Collections can be merged. So it's possible to build a collection with different sources (attributes, yaml, json, php).
+
+#### Attribute argument collection (\<attributeArgument\>)
+
+Collects **arguments** from the attribute usages:
+
+- `name`: **required**
+    - Collection name
+- `className`: **required**
+    - Attribute fully qualified name, e.g. `\Attributes\AsCommand`
+- `argumentIndex`: **required**
+    - Numeric position of the interactive element in the parameters list
+    - Zero-based
+
+#### Attribute class collection (\<attributeClass\>)
+
+Collects **arguments** from the attribute usages:
+
+- `name`: **required**
+    - Collection name
+- `className`: **required**
+    - Attribute fully qualified name, e.g. `\Attributes\AsCommand`
 
 ### Other
 
@@ -173,3 +219,7 @@ The plugin for PhpStorm natively adds support of XSD scheme, but if you want to 
 
 ##### autocomplete
 ![autocomplete.png](docs/images/autocomplete.png)
+
+##### collections
+![collection_arguments.png](docs/images/collection_arguments.png)
+![collection_classes.png](docs/images/collection_classes.png)

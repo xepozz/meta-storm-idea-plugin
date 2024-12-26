@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <collection
+                className="\Framework\AttributeArgumentValueInterface"
+                methodName="attributeArgumentValue"
+                argumentIndex="0"
+                collectionName="workflows_methods"
+        />
+        <collection
+                className="\Framework\ClientInterface"
+                methodName="attributeClass"
+                argumentIndex="0"
+                collectionName="workflows_classes"
+        />
+    </definitions>
+    <collections>
+        <attributeArgument
+                name="workflows_methods"
+                className="\Framework\AttributeValueMarker"
+                argumentIndex="0"
+        />
+        <attributeClass
+                name="workflows_classes"
+                className="\Framework\ClassMarker"
+        />
+    </collections>
+</meta-storm>
