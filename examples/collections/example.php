@@ -15,7 +15,10 @@ namespace Framework {
     #[Attribute(Attribute::TARGET_METHOD|Attribute::IS_REPEATABLE)]
     class AttributeValueMarker { public function __construct(string $name){} }
 
-    interface ClientInterface {
+    interface AttributeArgumentValueInterface {
+        public function attributeArgumentValue(string $name);
+    }
+    interface ClientInterface extends AttributeArgumentValueInterface {
         public function attributeArgumentValue(string $name);
         public function attributeClass(string $name);
     }

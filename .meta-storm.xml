@@ -39,14 +39,26 @@
                 argumentIndex="0"
                 collectionName="tags"
         />
+        <collection
+                className="\Framework\Client"
+                methodName="__construct"
+                argumentIndex="0"
+                collectionName="tags"
+        />
+        <collection
+                className="\Framework\AttributeValueMarker"
+                methodName="__construct"
+                argumentIndex="0"
+                collectionName="tags"
+        />
     </definitions>
     <collections>
-        <attribute
+        <attributeArgument
                 name="commands"
                 className="\Framework\Command"
                 argumentIndex="0"
         />
-        <attribute
+        <attributeArgument
                 name="tags"
                 className="\Framework\Tag"
                 argumentIndex="0"

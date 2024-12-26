@@ -2,7 +2,7 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <collection
-                className="\Framework\ClientInterface"
+                className="\Framework\AttributeArgumentValueInterface"
                 methodName="attributeArgumentValue"
                 argumentIndex="0"
                 collectionName="workflows_methods"

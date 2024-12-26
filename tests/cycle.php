@@ -10,6 +10,7 @@ use Framework\AttributeValueMarker;
 class CycleFoo
 {
     #[AttributeValueMarker('test-cycle-bar')]
+    #[AttributeValueMarker('tag_logger')]
     public function cycleBar()
     {
         echo "test";
@@ -17,5 +18,7 @@ class CycleFoo
 }
 
 
-$client = new Client();
-$client->attributeArgumentValue('test-bar');
+new AttributeValueMarker('tag_logger');
+$client = new Client('tag_logger');
+$client->attributeArgumentValue('');
+$client->attributeClass(\App\MyRenderer::class);
