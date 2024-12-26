@@ -17,5 +17,5 @@ class TestFoo
 }
 
 
-$workflowClient = new Client();
-$workflowClient->attributeArgumentValue('test-bar');
+$client = new Client();
+$client->attributeArgumentValue('test-bar');
