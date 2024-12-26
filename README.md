@@ -219,3 +219,7 @@ The plugin for PhpStorm natively adds support of XSD scheme, but if you want to 
 
 ##### autocomplete
 ![autocomplete.png](docs/images/autocomplete.png)
+
+##### collections
+![collection_arguments.png](docs/images/collection_arguments.png)
+![collection_classes.png](docs/images/collection_classes.png)
