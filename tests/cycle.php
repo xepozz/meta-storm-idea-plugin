@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-use Framework\WorkflowClient;
-use Framework\WorkflowInterface;
-use Framework\WorkflowMethod;
+use Framework\Client;
+use Framework\ClassMarker;
+use Framework\AttributeValueMarker;
 
-#[WorkflowInterface]
+#[ClassMarker]
 class CycleFoo
 {
-    #[WorkflowMethod('test-cycle-bar')]
+    #[AttributeValueMarker('test-cycle-bar')]
     public function cycleBar()
     {
         echo "test";
@@ -17,5 +17,5 @@ class CycleFoo
 }
 
 
-$workflowClient = new WorkflowClient();
-$workflowClient->newUntypedWorkflowStub('test-bar');
+$workflowClient = new Client();
+$workflowClient->attributeArgumentValue('test-bar');

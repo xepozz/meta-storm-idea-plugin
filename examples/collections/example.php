@@ -11,13 +11,17 @@ namespace Framework {
     class Container{ public function getCommand(string $name):mixed {} }
 
     #[Attribute(Attribute::TARGET_CLASS)]
-    class WorkflowInterface {}
+    class ClassMarker {}
     #[Attribute(Attribute::TARGET_METHOD|Attribute::IS_REPEATABLE)]
-    class WorkflowMethod { public function __construct(string $name){} }
+    class AttributeValueMarker { public function __construct(string $name){} }
 
-    class WorkflowClient {
-        public function newUntypedWorkflowStub(string $name){}
-        public function newWorkflow(string $name){}
+    interface ClientInterface {
+        public function attributeArgumentValue(string $name);
+        public function attributeClass(string $name);
+    }
+    class Client implements ClientInterface {
+        public function attributeArgumentValue(string $name){}
+        public function attributeClass(string $name){}
     }
 }
 
@@ -25,9 +29,9 @@ namespace App {
     use Framework\Command;
     use Framework\Container;
     use Framework\Tag;
-    use Framework\WorkflowClient;
-    use Framework\WorkflowInterface;
-    use Framework\WorkflowMethod;
+    use Framework\Client;
+    use Framework\ClassMarker;
+    use Framework\AttributeValueMarker;
 
     #[Tag('tag_logger')]
     #[Command('app')]
@@ -37,7 +41,7 @@ namespace App {
     #[Command('index')]
     class FooRenderer {}
 
-    #[WorkflowInterface]
+    #[ClassMarker]
     class MyRenderer {}
 
 
@@ -45,20 +49,26 @@ namespace App {
     $command = $c->getCommand('view'); // $value to be expected FileLogger class
     $tag = $c->getTag('tag_logger'); // $value to be expected FileLogger class
 
-    #[WorkflowInterface]
+    #[ClassMarker]
     class Foo
     {
-        #[WorkflowMethod('method-baaaaar')]
-        #[WorkflowMethod('workflow-type')]
+        #[AttributeValueMarker('method-baaaaar')]
+        #[AttributeValueMarker('workflow-type')]
         public function bar()
         {
             echo "test";
         }
     }
 
+    #[ClassMarker]
+    interface FooInterface
+    {}
 
-    $workflowClient = new WorkflowClient();
-    $workflowClient->newUntypedWorkflowStub('workflow-type');
-    $workflowClient->newWorkflow(\App\MyRenderer::class);
+    $a = new #[ClassMarker] class {};
+    $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
+
+    $workflowClient = new Client();
+    $workflowClient->attributeArgumentValue('test-bar');
+    $workflowClient->newWorkflow
 
 }
