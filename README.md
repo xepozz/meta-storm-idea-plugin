@@ -1,8 +1,8 @@
 # 🌟 **MetaStorm** – Smarter References and Autocompletion for PHPStorm! 🚀
 
-![Downloads](https://img.shields.io/jetbrains/plugin/d/26121-meta-storm)
-![Rating](https://img.shields.io/jetbrains/plugin/r/rating/26121-meta-storm)
-![Version](https://img.shields.io/jetbrains/plugin/v/26121-meta-storm)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/26121-meta-storm?style=flat-square)](https://plugins.jetbrains.com/plugin/26121-meta-storm)
+[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/26121-meta-storm?style=flat-square)](https://plugins.jetbrains.com/plugin/26121-meta-storm/reviews)
+[![Version](https://img.shields.io/jetbrains/plugin/v/26121-meta-storm?style=flat-square)](https://plugins.jetbrains.com/plugin/26121-meta-storm/versions)
 
 Plugin on Jetbrains Marketplace: https://plugins.jetbrains.com/plugin/26121-meta-storm/
 
