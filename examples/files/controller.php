@@ -16,6 +16,7 @@ class Controller extends BaseController
     public static function paint()
     {
         $c = new self;
+        $c->renderBlade('views/index');
         $c->render('views/index.php');
         (new self)->render('views/index.php');
         (new static)->render('views/index.php');
