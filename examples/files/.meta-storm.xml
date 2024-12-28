@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <files
+                className="\Controller"
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+        <files
+                className="\Controller"
+                methodName="renderBlade"
+                argumentIndex="0"
+                fileExt="blade.php"
+                relatedTo="directory"/>
+        <files
+                className="\Renderer"
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+
+        <files
+                methodName="render"
+                argumentIndex="0"
+                fileExt=""
+                relatedTo="directory"/>
+    </definitions>
+</meta-storm>
