@@ -19,13 +19,9 @@ Short Youtube demo: https://youtu.be/fFGrRNFDZIg
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <properties
-                className="\ArrayHelper"
-                methodName="getValue"
-                argumentIndex="1"
-                relatedTo="argument"
-                relatedArgumentIndex="0"
-        />
+        <classMethod class="\ArrayHelper" method="getValue" argument="1">
+            <properties relatedTo="argument" relatedArgumentIndex="0"/>
+        </classMethod>
     </definitions>
 </meta-storm>
 ```
@@ -72,7 +68,11 @@ Meta Storm searches for any files with the `.meta-storm.xml` at the end of file 
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
+        
     </definitions>
+    <collections>
+        
+    </collections>
 </meta-storm>
 ```
 
@@ -100,11 +100,11 @@ Once you configured a method plugin activate the following features:
 
 Provide properties of the related class.
 
-- `className`: **required**
-  - Should be a FQN classname, e.g. `\App\Helper\Arrays`
-- `methodName`: **required**
+- `class`: **required**
+  - Should be a FQN class name, e.g. `\App\Helper\Arrays`
+- `method`: **required**
   - Should be desired method name without parenthesis: `getPropertyValue`
-- `argumentIndex`: **required**
+- `argument`: **required**
   - Numeric position of the interactive element in the parameters list
   - Zero-based
 - `relatedTo`: **required**
@@ -116,12 +116,12 @@ Provide properties of the related class.
 
 Provide files and directories at the related filesystem point.
 
-- `className`: **optional**
-  - Should be a fully qualified classname, e.g. `\App\Helper\Arrays`
-  - Or absent if `methodName` is a function in global scope
-- `methodName`: **required**
+- `class`: **optional**
+  - Should be a fully qualified class name, e.g. `\App\Helper\Arrays`
+  - Or absent if `method` is a function in global scope
+- `method`: **required**
   - Should be desired method name without parenthesis: `getPropertyValue`
-- `argumentIndex`: **required**
+- `argument`: **required**
   - Numeric position of the interactive element in the parameters list
   - Zero-based
 - `fileExt`: **required**
@@ -137,15 +137,15 @@ Provide files and directories at the related filesystem point.
 
 Provide value from the [defined collections](#collections)
 
-- `className`: **optional**
-  - Should be a fully qualified classname, e.g. `\App\Helper\Arrays`
-  - Or absent if `methodName` is a function in global scope
-- `methodName`: **required**
+- `class`: **optional**
+  - Should be a fully qualified class name, e.g. `\App\Helper\Arrays`
+  - Or absent if `method` is a function in global scope
+- `method`: **required**
   - Should be desired method name without parenthesis: `getPropertyValue`
-- `argumentIndex`: **required**
+- `argument`: **required**
   - Numeric position of the interactive element in the parameters list
   - Zero-based
-- `collectionName`: **required**
+- `name`: **required**
   - Collection name defined at `<collections>` section
 
 ### Collections
@@ -160,9 +160,9 @@ Collects **arguments** from the attribute usages:
 
 - `name`: **required**
     - Collection name
-- `className`: **required**
+- `class`: **required**
     - Attribute fully qualified name, e.g. `\Attributes\AsCommand`
-- `argumentIndex`: **required**
+- `argument`: **required**
     - Numeric position of the interactive element in the parameters list
     - Zero-based
 
@@ -172,7 +172,7 @@ Collects **arguments** from the attribute usages:
 
 - `name`: **required**
     - Collection name
-- `className`: **required**
+- `class`: **required**
     - Attribute fully qualified name, e.g. `\Attributes\AsCommand`
 
 ### Other

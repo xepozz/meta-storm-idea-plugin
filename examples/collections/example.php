@@ -47,11 +47,6 @@ namespace App {
     #[ClassMarker]
     class MyRenderer {}
 
-
-    $c = new Container;
-    $command = $c->getCommand('view'); // $value to be expected FileLogger class
-    $tag = $c->getTag('tag_logger'); // $value to be expected FileLogger class
-
     #[ClassMarker]
     class Foo
     {

@@ -1,48 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <properties
-                className="\ArrayHelper"
-                methodName="getPropertyValue"
-                argumentIndex="1"
-                relatedTo="argument"
-                relatedArgumentIndex="0"
-        />
-        <collection
-                className="\Framework\Container"
-                methodName="getCommand"
-                argumentIndex="0"
-                collectionName="commands"
-        />
-        <collection
-                className="\Framework\Container"
-                methodName="getTag"
-                argumentIndex="0"
-                collectionName="tags"
-        />
-        <collection
-                className="\Framework\Client"
-                methodName="__construct"
-                argumentIndex="0"
-                collectionName="tags"
-        />
-        <collection
-                className="\Framework\AttributeValueMarker"
-                methodName="__construct"
-                argumentIndex="0"
-                collectionName="tags"
-        />
+        <classMethod class="\ArrayHelper" method="getPropertyValue" argument="1">
+            <properties relatedTo="argument" relatedArgumentIndex="0"/>
+        </classMethod>
+        <classMethod class="\Framework\Container" method="getCommand" argument="0">
+            <collection name="commands" argument="0" />
+        </classMethod>
+        <classMethod class="\Framework\Container" method="getTag" argument="0">
+            <collection name="tags" argument="0" />
+        </classMethod>
+        <classMethod class="\Framework\Client" method="__construct" argument="0">
+            <collection name="tags" argument="0" />
+        </classMethod>
+        <classMethod class="\Framework\AttributeValueMarker" method="__construct" argument="0">
+            <collection name="tags" argument="0" />
+        </classMethod>
     </definitions>
     <collections>
         <attributeArgument
                 name="commands"
-                className="\Framework\Command"
-                argumentIndex="0"
+                class="\Framework\Command"
+                argument="0"
         />
         <attributeArgument
                 name="tags"
-                className="\Framework\Tag"
-                argumentIndex="0"
+                class="\Framework\Tag"
+                argument="0"
         />
     </collections>
 </meta-storm>
