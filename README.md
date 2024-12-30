@@ -1,4 +1,4 @@
-# 🌟 **MetaStorm** – Smarter References and Autocompletion for PHPStorm! 🚀
+# 🌟 **MetaStorm** – Ultimate tool for PHPStorm! 🚀
 
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/26121-meta-storm?style=flat-square)](https://plugins.jetbrains.com/plugin/26121-meta-storm)
 [![Rating](https://img.shields.io/jetbrains/plugin/r/rating/26121-meta-storm?style=flat-square)](https://plugins.jetbrains.com/plugin/26121-meta-storm/reviews)
@@ -6,13 +6,24 @@
 
 Plugin on Jetbrains Marketplace: https://plugins.jetbrains.com/plugin/26121-meta-storm/
 
-**MetaStorm** is the ultimate tool for developers who want their IDE to understand their code on a deeper level.
-With a single customizable rule, you can unlock both **references** and **autocompletion** simultaneously!
-Save time, avoid mistakes, and navigate your projects effortlessly. 💻✨
+**MetaStorm** makes your IDE understand code even deeper.
+
+A few lines of config files unlock both **references** and **autocompletion** at regular places such as `method($object, <property of object>)`, `render(<file name>)`, etc
 
 ## Quick start
 
 Short Youtube demo: https://youtu.be/fFGrRNFDZIg
+
+### Goal
+
+When I use the static method `ArrayHelper::getValue` I want to make my IDE to be as helpful as possible.
+
+I want to make the IDE understand that if I type the second argument it must be one of the properties of the first argument:
+
+```php
+public static function getValue(object $object, string $property)
+``` 
+
 
 1. Create a file with the name `.meta-storm.xml` at any place in your project with the following content:
 
@@ -37,7 +48,7 @@ class User { private $id; protected $name; public $age; }
 $a = new User;
 
 class ArrayHelper {
-    public static function getValue(object $object, string $name) {} 
+    public static function getValue(object $object, string $property) {} 
 }
 
 ArrayHelper::getValue($a, 'age');
