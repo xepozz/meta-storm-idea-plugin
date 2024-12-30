@@ -9,8 +9,13 @@
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded" minOccurs="0">
                             <!--                            <xs:element ref="targets" minOccurs="0" maxOccurs="unbounded"/>-->
+                            <xs:element type="target-returnValue" name="returnValue" maxOccurs="unbounded"
+                                        minOccurs="0"/>
                             <xs:element type="target-function" name="function" maxOccurs="unbounded" minOccurs="0"/>
-                            <xs:element type="target-classMethod" name="classMethod" maxOccurs="unbounded" minOccurs="0"/>
+                            <xs:element type="target-classConstructor" name="classConstructor" maxOccurs="unbounded"
+                                        minOccurs="0"/>
+                            <xs:element type="target-classMethod" name="classMethod" maxOccurs="unbounded"
+                                        minOccurs="0"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
@@ -41,6 +46,7 @@
     <xs:simpleType name="related">
         <xs:restriction base="xs:string">
             <xs:enumeration value="file"/>
+            <xs:enumeration value="current_class"/>
             <xs:enumeration value="directory"/>
             <xs:enumeration value="project"/>
             <xs:enumeration value="argument"/>
@@ -51,14 +57,31 @@
     <!-- targets -->
     <xs:element name="targets" abstract="true"/>
     <xs:element name="classMethod" type="target-classMethod" substitutionGroup="targets"/>
+    <xs:element name="classConstructor" type="target-classConstructor" substitutionGroup="targets"/>
     <xs:element name="function" type="target-function" substitutionGroup="targets"/>
+    <xs:element name="returnValue" type="target-returnValue" substitutionGroup="targets"/>
 
+    <xs:complexType name="target-returnValue">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:string" name="method" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+    </xs:complexType>
     <xs:complexType name="target-classMethod">
         <xs:sequence>
             <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:string" name="method" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="target-classConstructor">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
     </xs:complexType>
     <xs:complexType name="target-function">
@@ -74,6 +97,8 @@
     <xs:element name="files" type="feature-files" substitutionGroup="features"/>
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
+    <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
+    <xs:element name="tables" type="feature-methods" substitutionGroup="features"/>
 
     <xs:complexType name="feature-files" mixed="true">
         <xs:sequence>
@@ -94,6 +119,29 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="related" name="relatedTo" use="required"/>
                 <xs:attribute type="xs:nonNegativeInteger" name="relatedArgumentIndex" use="required"/>
+                <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+                <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+                <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="feature-methods" mixed="true">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="related" name="relatedTo" use="required"/>
+                <xs:attribute type="xs:nonNegativeInteger" name="relatedArgumentIndex" use="optional"/>
+                <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+                <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+                <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+                <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="feature-tables" mixed="true">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="related" name="relatedTo" use="required"/>
+                <xs:attribute type="xs:nonNegativeInteger" name="relatedArgumentIndex" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>

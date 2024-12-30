@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\MethodFinder" method="find" argument="1">
+            <methods relatedTo="argument" relatedArgumentIndex="0" private="false" />
+        </classMethod>
+        <classMethod class="\MethodFinder" method="findInCurrentClass" argument="0">
+            <methods relatedTo="current_class" relatedArgumentIndex="0" private="false" />
+        </classMethod>
+    </definitions>
+</meta-storm>

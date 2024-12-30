@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\MethodFinder" method="getTables" argument="0">
+            <tables relatedTo="current_class" relatedArgumentIndex="0" />
+        </classMethod>
+        <returnValue class="\ActiveRecord" method="tableName" argument="0">
+            <methods relatedTo="current_class" relatedArgumentIndex="0" static="false" />
+        </returnValue>
+    </definitions>
+</meta-storm>
