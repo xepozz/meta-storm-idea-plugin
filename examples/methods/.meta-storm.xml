@@ -2,13 +2,13 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\MethodFinder" method="find" argument="1">
-            <methods relatedTo="argument" relatedArgumentIndex="0" private="false" />
+            <methods relatedTo="argument" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="findInCurrentClass" argument="0">
-            <methods relatedTo="current_class" relatedArgumentIndex="0" private="false" />
+            <methods relatedTo="current_class" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="getMethods" argument="0">
-            <methods relatedTo="current_class" relatedArgumentIndex="0" />
+            <methods relatedTo="current_class" relatedArgument="0" />
         </classMethod>
     </definitions>
 </meta-storm>

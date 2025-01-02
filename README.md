@@ -32,7 +32,7 @@ public static function getValue(object $object, string $property)
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\ArrayHelper" method="getValue" argument="1">
-            <properties relatedTo="argument" relatedArgumentIndex="0"/>
+            <properties relatedTo="argument" relatedArgument="0"/>
         </classMethod>
     </definitions>
 </meta-storm>
@@ -212,38 +212,38 @@ Many of the following features automatically enable the following IDE abilities:
 
 Provide properties of the related class.
 
-| Parameter              | Required | Description                                                | Possible values                |
-|------------------------|----------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`            | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgumentIndex` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`               | no       | show or hide such properties                               | `true`, `false`                |
-| `protected`            | no       | show or hide such properties                               | `true`, `false`                |
-| `private`              | no       | show or hide such properties                               | `true`, `false`                |
-| `static`               | no       | show or hide such properties                               | `true`, `false`                |
-| `dynamic`              | no       | show or hide such properties                               | `true`, `false`                |
-| children               | no       | feature processors                                         |                                | 
+| Parameter         | Required | Description                                                | Possible values                |
+|-------------------|----------|------------------------------------------------------------|--------------------------------|
+| `relatedTo`       | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `relatedArgument` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`          | no       | show or hide such properties                               | `true`, `false`                |
+| `protected`       | no       | show or hide such properties                               | `true`, `false`                |
+| `private`         | no       | show or hide such properties                               | `true`, `false`                |
+| `static`          | no       | show or hide such properties                               | `true`, `false`                |
+| `dynamic`         | no       | show or hide such properties                               | `true`, `false`                |
+| children          | no       | feature processors                                         |                                | 
 
 ##### Example
 
 ```xml
-<properties relatedTo="argument" relatedArgumentIndex="0"/>
+<properties relatedTo="argument" relatedArgument="0"/>
 ```
 
 #### `methods`
 
 Provide properties of the related class.
 
-| Parameter              | Required | Description                                                | Possible values                |
-|------------------------|----------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`            | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgumentIndex` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`               | no       | show or hide such methods                                  | `true`, `false`                |
-| `protected`            | no       | show or hide such methods                                  | `true`, `false`                |
-| `private`              | no       | show or hide such methods                                  | `true`, `false`                |
-| `abstract`             | no       | show or hide such methods                                  | `true`, `false`                |
-| `static`               | no       | show or hide such methods                                  | `true`, `false`                |
-| `dynamic`              | no       | show or hide such methods                                  | `true`, `false`                |
-| children               | no       | feature processors                                         |                                | 
+| Parameter         | Required | Description                                                | Possible values                |
+|-------------------|----------|------------------------------------------------------------|--------------------------------|
+| `relatedTo`       | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `relatedArgument` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`          | no       | show or hide such methods                                  | `true`, `false`                |
+| `protected`       | no       | show or hide such methods                                  | `true`, `false`                |
+| `private`         | no       | show or hide such methods                                  | `true`, `false`                |
+| `abstract`        | no       | show or hide such methods                                  | `true`, `false`                |
+| `static`          | no       | show or hide such methods                                  | `true`, `false`                |
+| `dynamic`         | no       | show or hide such methods                                  | `true`, `false`                |
+| children          | no       | feature processors                                         |                                | 
 
 ##### Example
 
