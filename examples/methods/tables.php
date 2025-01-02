@@ -1,6 +1,8 @@
 <?php
 
-class MethodFinder {}
+class MethodFinder {
+    public function methodFinderMethod() {}
+}
 
 MethodFinder::getTables('sqlite_master');
 

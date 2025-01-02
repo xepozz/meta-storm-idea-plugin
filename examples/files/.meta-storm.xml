@@ -2,16 +2,16 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\Controller" method="render" argument="0">
-            <files fileExt="" relatedTo="directory"/>
+            <files extension="" relatedTo="directory"/>
         </classMethod>
         <classMethod class="\Controller" method="renderBlade" argument="0">
-            <files fileExt="blade.php" relatedTo="directory"/>
+            <files extension="blade.php" relatedTo="directory"/>
         </classMethod>
         <classMethod class="\Renderer" method="render" argument="0">
-            <files fileExt="" relatedTo="directory"/>
+            <files extension="" relatedTo="directory"/>
         </classMethod> 
         <function name="render" argument="0">
-            <files fileExt="" relatedTo="directory"/>
+            <files extension="" relatedTo="directory"/>
         </function>
     </definitions>
 </meta-storm>

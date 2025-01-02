@@ -215,17 +215,18 @@ Provide properties of the related class.
 | Parameter              | Required | Description                                                | Possible values                |
 |------------------------|----------|------------------------------------------------------------|--------------------------------|
 | `relatedTo`            | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgumentIndex` | yes      | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`               | yes      | show or hide such properties                               | `true`, `false`                |
-| `protected`            | yes      | show or hide such properties                               | `true`, `false`                |
-| `private`              | yes      | show or hide such properties                               | `true`, `false`                |
-| `static`               | yes      | show or hide such properties                               | `true`, `false`                |
+| `relatedArgumentIndex` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`               | no       | show or hide such properties                               | `true`, `false`                |
+| `protected`            | no       | show or hide such properties                               | `true`, `false`                |
+| `private`              | no       | show or hide such properties                               | `true`, `false`                |
+| `static`               | no       | show or hide such properties                               | `true`, `false`                |
+| `dynamic`              | no       | show or hide such properties                               | `true`, `false`                |
 | children               | no       | feature processors                                         |                                | 
 
 ##### Example
 
 ```xml
-<properties relatedTo="argument" relatedArgumentIndex="0" />
+<properties relatedTo="argument" relatedArgumentIndex="0"/>
 ```
 
 #### `methods`
@@ -235,12 +236,13 @@ Provide properties of the related class.
 | Parameter              | Required | Description                                                | Possible values                |
 |------------------------|----------|------------------------------------------------------------|--------------------------------|
 | `relatedTo`            | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgumentIndex` | yes      | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`               | yes      | show or hide such methods                                  | `true`, `false`                |
-| `protected`            | yes      | show or hide such methods                                  | `true`, `false`                |
-| `private`              | yes      | show or hide such methods                                  | `true`, `false`                |
-| `abstract`             | yes      | show or hide such methods                                  | `true`, `false`                |
-| `static`               | yes      | show or hide such methods                                  | `true`, `false`                |
+| `relatedArgumentIndex` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`               | no       | show or hide such methods                                  | `true`, `false`                |
+| `protected`            | no       | show or hide such methods                                  | `true`, `false`                |
+| `private`              | no       | show or hide such methods                                  | `true`, `false`                |
+| `abstract`             | no       | show or hide such methods                                  | `true`, `false`                |
+| `static`               | no       | show or hide such methods                                  | `true`, `false`                |
+| `dynamic`              | no       | show or hide such methods                                  | `true`, `false`                |
 | children               | no       | feature processors                                         |                                | 
 
 ##### Example
@@ -256,13 +258,13 @@ Provide files and directories at the related filesystem point.
 | Parameter   | Required | Description                                                    | Possible values                    |
 |-------------|----------|----------------------------------------------------------------|------------------------------------|
 | `relatedTo` | yes      | relative point to lookup for entries                           | See [Related type](#relatedto)     |
-| `fileExt`   | yes      | file extension you want to filter and hide from autocompletion | `(empty)`, `php`, `blade.php`, ... |
+| `extension` | no       | file extension you want to filter and hide from autocompletion | `(empty)`, `php`, `blade.php`, ... |
 | children    | no       | feature processors                                             |                                    | 
 
 ##### Example
 
 ```xml
-<files fileExt="" relatedTo="directory"/>
+<files extension="" relatedTo="directory"/>
 ```
 
 ##### Processors
