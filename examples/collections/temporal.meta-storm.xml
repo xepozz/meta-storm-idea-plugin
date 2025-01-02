@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <collection
-                className="\Framework\AttributeArgumentValueInterface"
-                methodName="attributeArgumentValue"
-                argumentIndex="0"
-                collectionName="workflows_methods"
-        />
-        <collection
-                className="\Framework\ClientInterface"
-                methodName="attributeClass"
-                argumentIndex="0"
-                collectionName="workflows_classes"
-        />
+        <classMethod class="\Framework\AttributeArgumentValueInterface" method="attributeArgumentValue" argument="0">
+            <collection name="workflows_methods" argument="0" />
+        </classMethod>
+        <classMethod class="\Framework\ClientInterface" method="attributeClass" argument="0">
+            <collection name="workflows_classes" argument="0" />
+        </classMethod>
+        <classConstructor class="\Framework\ClientInterface" argument="0">
+            <collection name="workflows_classes" argument="0" />
+        </classConstructor>
     </definitions>
     <collections>
         <attributeArgument
                 name="workflows_methods"
-                className="\Framework\AttributeValueMarker"
-                argumentIndex="0"
+                class="\Framework\AttributeValueMarker"
+                argument="0"
         />
         <attributeClass
                 name="workflows_classes"
-                className="\Framework\ClassMarker"
+                class="\Framework\ClassMarker"
         />
     </collections>
 </meta-storm>

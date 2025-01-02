@@ -20,5 +20,5 @@ class CycleFoo
 
 new AttributeValueMarker('tag_logger');
 $client = new Client('tag_logger');
-$client->attributeArgumentValue('');
+$client->attributeArgumentValue('workflow-type');
 $client->attributeClass(\App\MyRenderer::class);
