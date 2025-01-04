@@ -13,5 +13,23 @@
         <function name="render" argument="0">
             <files extension="" relatedTo="directory"/>
         </function>
+        <function name="renderProject" argument="0">
+            <files extension="php" relatedTo="project" >
+                <directoryProcessors>
+                    <append value="examples/files/append" />
+                    <regexp from="(.+)/append" to="$1/views" />
+                </directoryProcessors>
+            </files>
+        </function>
+        <function name="renderThemed" argument="0">
+            <files extension="php" relatedTo="project" >
+                <directoryProcessors>
+                    <append value="examples/files/themes/${VIEW-THEME}" />
+                </directoryProcessors>
+            </files>
+        </function>
     </definitions>
+    <envs>
+        <env name="VIEW-THEME" value="dark" />
+    </envs>
 </meta-storm>
