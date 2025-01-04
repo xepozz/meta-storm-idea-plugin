@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\CollectionResolver" method="resolveMethod" argument="0">
+            <methods xpath="$variable.$proxy.testProxy()" />
+        </classMethod>
+        <classMethod class="\CollectionResolver" method="resolveProperty" argument="0">
+            <properties xpath="$variable.$proxy.$original" />
+        </classMethod>
+    </definitions>
+</meta-storm>

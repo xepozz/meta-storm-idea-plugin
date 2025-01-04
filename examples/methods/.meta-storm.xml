@@ -5,10 +5,10 @@
             <methods relatedTo="argument" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="findInCurrentClass" argument="0">
-            <methods relatedTo="current_class" relatedArgument="0" private="false" />
+            <methods relatedTo="containingClass" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="getMethods" argument="0">
-            <methods relatedTo="current_class" relatedArgument="0" />
+            <methods relatedTo="containingClass" relatedArgument="0" />
         </classMethod>
     </definitions>
 </meta-storm>

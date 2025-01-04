@@ -248,7 +248,7 @@ Provide properties of the related class.
 ##### Example
 
 ```xml
-<methods relatedTo="current_class" static="false" />
+<methods relatedTo="containingClass" static="false" />
 ```
 
 #### `files`
@@ -348,7 +348,7 @@ Collects **argument** from the attribute usage.
 - Complex parameter changes interpretation of the files
 - Possible values:
     - `file` – related to the current (opened) file
-    - `current_class` – related to the current (opened) class
+    - `containingClass` – related to the current (opened) class
     - `directory` – related to the current file directory
     - `project` – related to the project path
     - `argument` – related to the positioned argument: it's `$obj` in `$service->method($obj, $prop)`

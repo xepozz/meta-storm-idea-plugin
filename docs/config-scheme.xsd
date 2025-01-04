@@ -67,7 +67,7 @@
     <xs:simpleType name="related">
         <xs:restriction base="xs:string">
             <xs:enumeration value="file"/>
-            <xs:enumeration value="current_class"/>
+            <xs:enumeration value="containingClass"/>
             <xs:enumeration value="directory"/>
             <xs:enumeration value="project"/>
             <xs:enumeration value="argument"/>
@@ -137,7 +137,8 @@
     <xs:complexType name="feature-properties" mixed="true">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute type="related" name="relatedTo" use="required"/>
+                <xs:attribute type="related" name="relatedTo" use="optional"/>
+                <xs:attribute type="xs:string" name="xpath" use="optional"/>
                 <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
                 <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
                 <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
@@ -150,7 +151,8 @@
     <xs:complexType name="feature-methods" mixed="true">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute type="related" name="relatedTo" use="required"/>
+                <xs:attribute type="related" name="relatedTo" use="optional"/>
+                <xs:attribute type="xs:string" name="xpath" use="optional"/>
                 <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
                 <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
                 <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
