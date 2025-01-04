@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\StaticCollector" method="suggest" argument="0">
+            <collection name="static_strings"/>
+            <files extension="" relatedTo="directory"/>
+        </classMethod>
+    </definitions>
+    <collections>
+        <strings name="static_strings">
+            <value>Hello</value>
+            <value>Static</value>
+            <value>World</value>
+        </strings>
+    </collections>
+</meta-storm>

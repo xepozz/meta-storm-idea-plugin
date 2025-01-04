@@ -50,7 +50,7 @@ namespace App {
     #[ClassMarker]
     class Foo
     {
-        #[AttributeValueMarker('method-baaaaar')]
+        #[AttributeValueMarker('method-baaaaar2')]
         #[AttributeValueMarker('workflow-type')]
         public function bar()
         {
@@ -66,7 +66,7 @@ namespace App {
     $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
 
     $client = new Client('');
-    $client->attributeArgumentValue('e');
-    $client->attributeClass();
+    $client->attributeArgumentValue();
+    $client->attributeClass()
 
 }
