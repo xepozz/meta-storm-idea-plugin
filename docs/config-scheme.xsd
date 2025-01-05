@@ -1,6 +1,8 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="meta-storm"
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        targetNamespace="meta-storm"
 >
     <xs:element name="meta-storm">
         <xs:complexType>
@@ -118,7 +120,7 @@
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
     <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
-    <xs:element name="tables" type="feature-methods" substitutionGroup="features"/>
+    <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
 
     <xs:complexType name="feature-files" mixed="true">
         <xs:sequence>
@@ -135,68 +137,43 @@
         <xs:attribute type="xs:string" name="extension" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-properties" mixed="true">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="related" name="relatedTo" use="optional"/>
-                <xs:attribute type="xs:string" name="xpath" use="optional"/>
-                <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
-                <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
+        <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-methods" mixed="true">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="related" name="relatedTo" use="optional"/>
-                <xs:attribute type="xs:string" name="xpath" use="optional"/>
-                <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
-                <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
-                <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
+        <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-tables" mixed="true">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="related" name="relatedTo" use="required"/>
-                <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="databaseName" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-collection" mixed="true">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="name" use="required"/>
-                <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
     </xs:complexType>
 
 
     <!-- processors -->
 
     <xs:complexType name="processor-append">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="value"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="value"/>
     </xs:complexType>
 
     <xs:complexType name="processor-regexp">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="from" use="required"/>
-                <xs:attribute type="xs:string" name="to" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="from" use="required"/>
+        <xs:attribute type="xs:string" name="to" use="required"/>
     </xs:complexType>
 </xs:schema>
