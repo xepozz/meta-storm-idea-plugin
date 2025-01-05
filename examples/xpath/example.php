@@ -14,11 +14,12 @@ class CollectionProxy {
 
 class CollectionResolver {
     public CollectionProxy $proxy;
+    public string $proxyClass = CollectionProxy::class;
 
     public function testResolver() {}
 }
 
 
 $resolver = new CollectionResolver();
-$resolver->resolveMethod('');
+$resolver->resolveMethod('privateMethodA');
 $resolver->resolveProperty('');

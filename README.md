@@ -212,16 +212,17 @@ Many of the following features automatically enable the following IDE abilities:
 
 Provide properties of the related class.
 
-| Parameter         | Required | Description                                                | Possible values                |
-|-------------------|----------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`       | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgument` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`          | no       | show or hide such properties                               | `true`, `false`                |
-| `protected`       | no       | show or hide such properties                               | `true`, `false`                |
-| `private`         | no       | show or hide such properties                               | `true`, `false`                |
-| `static`          | no       | show or hide such properties                               | `true`, `false`                |
-| `dynamic`         | no       | show or hide such properties                               | `true`, `false`                |
-| children          | no       | feature processors                                         |                                | 
+| Parameter         | Required                 | Description                                                | Possible values                |
+|-------------------|--------------------------|------------------------------------------------------------|--------------------------------|
+| `relatedTo`       | no  (if `xpath` yes)     | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `xpath`           | no (if `relatedTo` yes)  | xpath string to walk through the entities                  | See [Related type](#xpath)     |
+| `relatedArgument` | no                       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`          | no                       | show or hide such properties                               | `true`, `false`                |
+| `protected`       | no                       | show or hide such properties                               | `true`, `false`                |
+| `private`         | no                       | show or hide such properties                               | `true`, `false`                |
+| `static`          | no                       | show or hide such properties                               | `true`, `false`                |
+| `dynamic`         | no                       | show or hide such properties                               | `true`, `false`                |
+| children          | no                       | feature processors                                         |                                | 
 
 ##### Example
 
@@ -233,17 +234,18 @@ Provide properties of the related class.
 
 Provide properties of the related class.
 
-| Parameter         | Required | Description                                                | Possible values                |
-|-------------------|----------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`       | yes      | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `relatedArgument` | no       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`          | no       | show or hide such methods                                  | `true`, `false`                |
-| `protected`       | no       | show or hide such methods                                  | `true`, `false`                |
-| `private`         | no       | show or hide such methods                                  | `true`, `false`                |
-| `abstract`        | no       | show or hide such methods                                  | `true`, `false`                |
-| `static`          | no       | show or hide such methods                                  | `true`, `false`                |
-| `dynamic`         | no       | show or hide such methods                                  | `true`, `false`                |
-| children          | no       | feature processors                                         |                                | 
+| Parameter         | Required                | Description                                                | Possible values                |
+|-------------------|-------------------------|------------------------------------------------------------|--------------------------------|
+| `relatedTo`       | no  (if `xpath` yes)    | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `xpath`           | no (if `relatedTo` yes) | xpath string to walk through the entities                  | See [Related type](#xpath)     |
+| `relatedArgument` | no                      | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`          | no                      | show or hide such methods                                  | `true`, `false`                |
+| `protected`       | no                      | show or hide such methods                                  | `true`, `false`                |
+| `private`         | no                      | show or hide such methods                                  | `true`, `false`                |
+| `abstract`        | no                      | show or hide such methods                                  | `true`, `false`                |
+| `static`          | no                      | show or hide such methods                                  | `true`, `false`                |
+| `dynamic`         | no                      | show or hide such methods                                  | `true`, `false`                |
+| children          | no                      | feature processors                                         |                                | 
 
 ##### Example
 
@@ -341,6 +343,62 @@ Collects **argument** from the attribute usage.
 <attributeArgument name="workflows_methods" argument="0" />
 ```
 
+#### `strings`
+
+Defines static strings from the current definition.
+
+| Parameter  | Required | Description                                  | Possible values              |
+|------------|----------|----------------------------------------------|------------------------------|
+| `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
+| children   | no       | feature processors                           |                              | 
+
+##### Example
+
+```xml
+<strings name="static_strings">
+    <value>Hello</value>
+    <value>Static</value>
+    <value>World</value>
+</strings>
+```
+
+### Environment Variables Overview
+
+Environment variables make it able to have late static binding for vendor <-> user definitions.
+
+E.g., you as a vendor may define default path or a part of path, database name, default class or whatever*,
+buy a user when face with its custom settings will have incorrect behaviour.
+
+This is when `envs` will come in useful:
+- Replace a changing part with an `env`
+- Set default value
+- Let user redefine the variable
+
+A few rules about the `envs`:
+- Variable name must be in uppercase
+- Values outside the vendor folder override those within it
+- Since there may be multiple files, the order of value overwriting is not guaranteed
+
+#### `envs`
+
+Defines variables to be replaced in some other strings.
+
+#### `env`
+
+| Parameter | Required | Description        | Possible values                            |
+|-----------|----------|--------------------|--------------------------------------------|
+| `name`    | yes      | variable name      | `VIEW-THEME`, `YII2/FRAMEWORK:VIEW-THEME`  |
+| `value`   | yes      | variable values    | `dark`, `database-name`, ...               |
+| children  | no       | feature processors |                                            | 
+
+##### Example
+
+```xml
+<envs>
+    <env name="VIEW-THEME" value="dark" />
+</envs>
+```
+
 ### Other
 
 ##### `relatedTo`
@@ -354,6 +412,39 @@ Collects **argument** from the attribute usage.
     - `argument` – related to the positioned argument: it's `$obj` in `$service->method($obj, $prop)`
     - `variable` – related to the variable holding the method: it's `$service` in `$service->method()`
 
+##### `xpath`
+
+- A string used to walk through the programming entities: classes, methods, properties, constants, etc
+- XPath must be started from a relative point:
+  - `$containingClass` – means the class in which context the target is placed
+  - `$argument` – related to the positioned argument: it's `$obj` in `$service->method($obj, $prop)`
+  - `$variable` – related to the variable holding the method: it's `$service` in `$service->method()` 
+- After you specified starting point you may walk further:
+  - Each "entrance" must be a dot symbol: `.`
+  - Each "property" must be prefixed with a dollar symbol: `$`
+  - Each "method return type" must have double squares as a suffix : `()`
+- Lookup supports:
+  - Typed properties: `private Class $property`
+  - Untyped properties with reference inside: `private string $propertyClass = Class::class`
+  - Typed methods' returning: `public function methodA(): Class`
+
+###### Examples
+
+Look through a property in a factory
+```
+$containingClass.$originalClass
+```
+
+Look through the decorator
+```
+$variable.$decorated
+```
+
+Could be chained any number of times
+```
+$variable.$a.$b.$c.$d.methoA().methodB()
+```
+
 ### Processors
 
 #### `regexp`
@@ -363,8 +454,20 @@ Collects **argument** from the attribute usage.
     - `from`: **required**
         - Regular expression
     - `to`: **required**
-        - Regular expression, could you $1, $2, etc as group references
-- Example: `<regexp from="([a-z])([A-Z])" to="$1-$2"/>` – converts `HelloWorld` to `Hello-World`
+        - Regular expression, could you \$1, \$2, etc as group references
+- Supports [envs](#envs) substitution
+
+###### Examples
+
+Converts `HelloWorld` to `Hello-World`
+```xml
+<regexp from="([a-z])([A-Z])" to="$1-$2"/>
+```
+
+Using `envs`:
+```xml
+<regexp from="(${VIEW-THEME})" to="$1-${VIEW-THEME}"/>
+```
 
 #### `append`
 
@@ -372,7 +475,19 @@ Collects **argument** from the attribute usage.
 - Parameters:
     - `value`: **required**
         - String
-- Example: `<append value="/common/mail"/>`
+- Supports [envs](#envs) substitution
+
+###### Examples
+
+Regular case:
+```xml
+<append value="/common/mail"/>
+```
+
+Using `envs`:
+```xml
+<append value="/resources/themes/${VIEW-THEME}/layout"/>
+```
 
 ## XSD Scheme
 
