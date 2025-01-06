@@ -119,6 +119,7 @@
     <xs:element name="files" type="feature-files" substitutionGroup="features"/>
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
+    <xs:element name="arrayValues" type="feature-arrayValues" substitutionGroup="features"/>
     <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
     <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
 
@@ -164,7 +165,9 @@
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
     </xs:complexType>
-
+    <xs:complexType name="feature-arrayValues" mixed="true">
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
 
     <!-- processors -->
 
