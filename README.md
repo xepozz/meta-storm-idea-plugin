@@ -212,17 +212,17 @@ Many of the following features automatically enable the following IDE abilities:
 
 Provide properties of the related class.
 
-| Parameter         | Required                 | Description                                                | Possible values                |
-|-------------------|--------------------------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`       | no  (if `xpath` yes)     | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `xpath`           | no (if `relatedTo` yes)  | xpath string to walk through the entities                  | See [Related type](#xpath)     |
-| `relatedArgument` | no                       | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
-| `public`          | no                       | show or hide such properties                               | `true`, `false`                |
-| `protected`       | no                       | show or hide such properties                               | `true`, `false`                |
-| `private`         | no                       | show or hide such properties                               | `true`, `false`                |
-| `static`          | no                       | show or hide such properties                               | `true`, `false`                |
-| `dynamic`         | no                       | show or hide such properties                               | `true`, `false`                |
-| children          | no                       | feature processors                                         |                                | 
+| Parameter         | Required                | Description                                                | Possible values                |
+|-------------------|-------------------------|------------------------------------------------------------|--------------------------------|
+| `relatedTo`       | no (if `xpath` set)     | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `xpath`           | no (if `relatedTo` set) | xpath string to walk through the entities                  | See [Related type](#xpath)     |
+| `relatedArgument` | no                      | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
+| `public`          | no                      | show or hide such properties                               | `true`, `false`                |
+| `protected`       | no                      | show or hide such properties                               | `true`, `false`                |
+| `private`         | no                      | show or hide such properties                               | `true`, `false`                |
+| `static`          | no                      | show or hide such properties                               | `true`, `false`                |
+| `dynamic`         | no                      | show or hide such properties                               | `true`, `false`                |
+| children          | no                      | feature processors                                         |                                | 
 
 ##### Example
 
@@ -236,8 +236,8 @@ Provide properties of the related class.
 
 | Parameter         | Required                | Description                                                | Possible values                |
 |-------------------|-------------------------|------------------------------------------------------------|--------------------------------|
-| `relatedTo`       | no  (if `xpath` yes)    | relative point to lookup for entries                       | See [Related type](#relatedto) |
-| `xpath`           | no (if `relatedTo` yes) | xpath string to walk through the entities                  | See [Related type](#xpath)     |
+| `relatedTo`       | no (if `xpath` set)     | relative point to lookup for entries                       | See [Related type](#relatedto) |
+| `xpath`           | no (if `relatedTo` set) | xpath string to walk through the entities                  | See [Related type](#xpath)     |
 | `relatedArgument` | no                      | related argument index, useful for many `relatedTo` values | `0`, `1`, `2`, ...             |
 | `public`          | no                      | show or hide such methods                                  | `true`, `false`                |
 | `protected`       | no                      | show or hide such methods                                  | `true`, `false`                |
@@ -257,16 +257,22 @@ Provide properties of the related class.
 
 Provide files and directories at the related filesystem point.
 
-| Parameter   | Required | Description                                                    | Possible values                    |
-|-------------|----------|----------------------------------------------------------------|------------------------------------|
-| `relatedTo` | yes      | relative point to lookup for entries                           | See [Related type](#relatedto)     |
-| `extension` | no       | file extension you want to filter and hide from autocompletion | `(empty)`, `php`, `blade.php`, ... |
-| children    | no       | feature processors                                             |                                    | 
+| Parameter   | Required                | Description                                                    | Possible values                    |
+|-------------|-------------------------|----------------------------------------------------------------|------------------------------------|
+| `relatedTo` | no (if `xpath` set)     | relative point to lookup for entries                           | See [Related type](#relatedto)     |
+| `xpath`     | no (if `relatedTo` set) | xpath string to walk through the entities                      | See [Related type](#xpath)         |
+| `extension` | no                      | file extension you want to filter and hide from autocompletion | `(empty)`, `php`, `blade.php`, ... |
+| children    | no                      | feature processors                                             |                                    | 
 
 ##### Example
 
+Directory-related files
 ```xml
 <files extension="" relatedTo="directory"/>
+```
+Absolute directory lookup
+```xml
+<files extension="" xpath="$project/resources/templates"/>
 ```
 
 ##### Processors
@@ -277,9 +283,10 @@ Provide files and directories at the related filesystem point.
 
 Provide database table names.
 
-| Parameter   | Required | Description                                                    | Possible values                    |
-|-------------|----------|----------------------------------------------------------------|------------------------------------|
-| children    | no       | feature processors                                             |                                    | 
+| Parameter  | Required | Description        | Possible values        |
+|------------|----------|--------------------|------------------------|
+| `database` | yes      | database name      | `main`, `replica`, ... |
+| children   | no       | feature processors |                        | 
 
 ##### Example
 
@@ -414,6 +421,30 @@ Defines variables to be replaced in some other strings.
 
 ##### `xpath`
 
+###### XPath for `<files>`
+
+- A string used to walk through the file system, like regular Unix-based FS path
+- XPath must be started from a relative point:
+    - `$project` – project base path
+    - `$file` – related to the current file
+    - `$directory` – related to the current directory
+
+###### Examples
+
+Absolute directory
+```
+$project/resources/templates
+```
+Current directory
+```
+$directory/views
+```
+Current file
+```
+$file/../views
+```
+
+###### XPath for `<methods>`, `<properties>`, `<arrayValues>`
 - A string used to walk through the programming entities: classes, methods, properties, constants, etc
 - XPath must be started from a relative point:
   - `$containingClass` – means the class in which context the target is placed

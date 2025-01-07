@@ -134,7 +134,8 @@
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
-        <xs:attribute type="related" name="relatedTo" use="required"/>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
         <xs:attribute type="xs:string" name="extension" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-properties" mixed="true">
@@ -159,7 +160,7 @@
         <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-tables" mixed="true">
-        <xs:attribute type="xs:string" name="databaseName" use="required"/>
+        <xs:attribute type="xs:string" name="database" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-collection" mixed="true">
         <xs:attribute type="xs:string" name="name" use="required"/>
