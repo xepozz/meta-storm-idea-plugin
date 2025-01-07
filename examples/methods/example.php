@@ -15,7 +15,7 @@ MethodFinder::find($user, 'protectedMethod');
 class Controller {
     public function action()
     {
-        MethodFinder::findInCurrentClass('method1');
+        MethodFinder::findInCurrentClass('');
     }
 
     public function method1() {}

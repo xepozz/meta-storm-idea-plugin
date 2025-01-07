@@ -3,7 +3,6 @@
     <definitions>
         <classMethod class="\StaticCollector" method="suggest" argument="0">
             <collection name="static_strings"/>
-            <files extension="" relatedTo="directory"/>
         </classMethod>
     </definitions>
     <collections>

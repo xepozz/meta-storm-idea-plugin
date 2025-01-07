@@ -2,24 +2,13 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\Controller" method="render" argument="0">
-            <files extension="" relatedTo="directory"/>
-        </classMethod>
-        <classMethod class="\Controller" method="renderBlade" argument="0">
-            <files extension="blade.php" relatedTo="directory"/>
+            <files relatedTo="directory" extension="" />
         </classMethod>
         <classMethod class="\Renderer" method="render" argument="0">
-            <files extension="" relatedTo="directory"/>
-        </classMethod> 
+            <files relatedTo="directory" extension="" />
+        </classMethod>
         <function name="render" argument="0">
-            <files extension="" relatedTo="directory"/>
-        </function>
-        <function name="renderProject" argument="0">
-            <files extension="php" relatedTo="project" >
-                <directoryProcessors>
-                    <append value="examples/files/append" />
-                    <regexp from="(.+)/append" to="$1/views" />
-                </directoryProcessors>
-            </files>
+            <files relatedTo="directory" extension="" />
         </function>
         <function name="renderThemed" argument="0">
             <files extension="php" relatedTo="project" >
@@ -28,6 +17,9 @@
                 </directoryProcessors>
             </files>
         </function>
+        <classMethod class="\Controller" method="xpath" argument="0">
+            <files extension="php" xpath="$project/examples/files/views" />
+        </classMethod>
     </definitions>
     <envs>
         <env name="VIEW-THEME" value="dark" />

@@ -5,7 +5,7 @@
             <methods relatedTo="argument" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="findInCurrentClass" argument="0">
-            <methods relatedTo="containingClass" relatedArgument="0" private="false" />
+            <methods xpath="$containingClass" relatedArgument="0" private="false" />
         </classMethod>
         <classMethod class="\MethodFinder" method="getMethods" argument="0">
             <methods relatedTo="containingClass" relatedArgument="0" />

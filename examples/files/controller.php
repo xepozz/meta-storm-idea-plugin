@@ -32,6 +32,7 @@ class SubController extends Controller
         $this->render('views/index.php');
         (new static)->render('views/index.php');
         (new parent)->render('views/index.php');
+        (new parent)->xpath('index');
     }
 }
 
