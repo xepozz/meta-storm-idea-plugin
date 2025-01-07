@@ -4,6 +4,9 @@
         <classMethod class="\Controller" method="render" argument="0">
             <files relatedTo="directory" extension="" />
         </classMethod>
+        <classMethod class="\Controller" method="renderBlade" argument="0">
+            <files relatedTo="directory" extension="blade.php" />
+        </classMethod>
         <classMethod class="\Renderer" method="render" argument="0">
             <files relatedTo="directory" extension="" />
         </classMethod>
