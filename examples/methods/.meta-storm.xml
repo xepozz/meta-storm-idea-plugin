@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\MethodFinder" method="find" argument="1">
+            <methods relatedTo="argument" relatedArgument="0" private="false" />
+        </classMethod>
+        <classMethod class="\MethodFinder" method="findInCurrentClass" argument="0">
+            <methods xpath="$containingClass" relatedArgument="0" private="false" />
+        </classMethod>
+        <classMethod class="\MethodFinder" method="getMethods" argument="0">
+            <methods relatedTo="containingClass" relatedArgument="0" />
+        </classMethod>
+    </definitions>
+</meta-storm>

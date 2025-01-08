@@ -47,15 +47,10 @@ namespace App {
     #[ClassMarker]
     class MyRenderer {}
 
-
-    $c = new Container;
-    $command = $c->getCommand('view'); // $value to be expected FileLogger class
-    $tag = $c->getTag('tag_logger'); // $value to be expected FileLogger class
-
     #[ClassMarker]
     class Foo
     {
-        #[AttributeValueMarker('method-baaaaar')]
+        #[AttributeValueMarker('method-baaaaar2')]
         #[AttributeValueMarker('workflow-type')]
         public function bar()
         {
@@ -70,8 +65,8 @@ namespace App {
     $a = new #[ClassMarker] class {};
     $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
 
-    $client = new Client();
-    $client->attributeArgumentValue('');
-    $client->attributeClass();
+    $client = new Client('');
+    $client->attributeArgumentValue();
+    $client->attributeClass()
 
 }

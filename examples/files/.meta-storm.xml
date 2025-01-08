@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Controller" method="render" argument="0">
+            <files relatedTo="directory" extension="" />
+        </classMethod>
+        <classMethod class="\Controller" method="renderBlade" argument="0">
+            <files relatedTo="directory" extension="blade.php" />
+        </classMethod>
+        <classMethod class="\Renderer" method="render" argument="0">
+            <files relatedTo="directory" extension="" />
+        </classMethod>
+        <function name="render" argument="0">
+            <files relatedTo="directory" extension="" />
+        </function>
+        <function name="renderThemed" argument="0">
+            <files extension="php" relatedTo="project" >
+                <directoryProcessors>
+                    <append value="examples/files/themes/${VIEW-THEME}" />
+                </directoryProcessors>
+            </files>
+        </function>
+        <classMethod class="\Controller" method="xpath" argument="0">
+            <files extension="php" xpath="$project/examples/files/views" />
+        </classMethod>
+        <classMethod class="\Controller" method="xpathDir" argument="0">
+            <files extension="php" xpath="$directory/views" />
+        </classMethod>
+        <classMethod class="\Controller" method="xpathFile" argument="0">
+            <files extension="php" xpath="$file/../views" />
+        </classMethod>
+    </definitions>
+    <envs>
+        <env name="VIEW-THEME" value="dark" />
+    </envs>
+</meta-storm>

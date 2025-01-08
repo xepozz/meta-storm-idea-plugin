@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Arrays\ArrayValues" method="gett" argument="0">
+            <arrayValues xpath="$variable.$strings" />
+        </classMethod>
+    </definitions>
+</meta-storm>

@@ -16,9 +16,12 @@ class Controller extends BaseController
     public static function paint()
     {
         $c = new self;
+        $c->renderBlade('views/index');
         $c->render('views/index.php');
         (new self)->render('views/index.php');
         (new static)->render('views/index.php');
+        $c->renderProject('index');
+        $c->renderThemed('index');
     }
 }
 
@@ -29,6 +32,9 @@ class SubController extends Controller
         $this->render('views/index.php');
         (new static)->render('views/index.php');
         (new parent)->render('views/index.php');
+        (new parent)->xpath('index');
+        (new parent)->xpathDir('index');
+        (new parent)->xpathFile('index');
     }
 }
 

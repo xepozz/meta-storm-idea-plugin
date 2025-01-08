@@ -1,59 +1,75 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="meta-storm"
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        targetNamespace="meta-storm"
 >
     <xs:element name="meta-storm">
         <xs:complexType>
-            <xs:sequence>
+            <xs:choice maxOccurs="unbounded">
                 <xs:element name="definitions">
                     <xs:complexType>
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                            <!--                            <xs:element ref="targets" minOccurs="0" maxOccurs="unbounded"/>-->
+                            <xs:element type="target-returnValue" name="returnValue" maxOccurs="unbounded"
+                                        minOccurs="0"/>
+                            <xs:element type="target-function" name="function" maxOccurs="unbounded" minOccurs="0"/>
+                            <xs:element type="target-classConstructor" name="classConstructor" maxOccurs="unbounded"
+                                        minOccurs="0"/>
+                            <xs:element type="target-classMethod" name="classMethod" maxOccurs="unbounded"
+                                        minOccurs="0"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="collections">
+                    <xs:complexType>
                         <xs:choice maxOccurs="unbounded">
-                            <xs:element name="files" maxOccurs="unbounded" minOccurs="0">
+                            <xs:element name="attributeArgument" maxOccurs="unbounded" minOccurs="0">
                                 <xs:complexType mixed="true">
-                                    <xs:sequence>
-                                        <xs:element name="directoryProcessors" minOccurs="0">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element type="processor-append"
-                                                                name="append" minOccurs="0" maxOccurs="unbounded"/>
-                                                    <xs:element type="processor-regexp"
-                                                                name="regexp" maxOccurs="unbounded" minOccurs="0"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute type="xs:string" name="className" use="required"/>
-                                    <xs:attribute type="xs:string" name="methodName" use="required"/>
-                                    <xs:attribute type="xs:nonNegativeInteger" name="argumentIndex" use="required"/>
-                                    <xs:attribute type="xs:string" name="fileExt" use="required"/>
-                                    <xs:attribute type="related" name="relatedTo" use="required"/>
+                                    <xs:attribute type="xs:string" name="name" use="required"/>
+                                    <xs:attribute type="xs:string" name="class" use="required"/>
+                                    <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="properties" maxOccurs="unbounded" minOccurs="0">
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute type="xs:string" name="className" use="required"/>
-                                            <xs:attribute type="xs:string" name="methodName" use="required"/>
-                                            <xs:attribute type="xs:nonNegativeInteger" name="argumentIndex"
-                                                          use="required"/>
-                                            <xs:attribute type="related" name="relatedTo" use="required"/>
-                                            <xs:attribute type="xs:nonNegativeInteger"
-                                                          name="relatedArgumentIndex" use="required"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
+                            <xs:element name="attributeClass" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType mixed="true">
+                                    <xs:attribute type="xs:string" name="name" use="required"/>
+                                    <xs:attribute type="xs:string" name="class" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="strings" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType mixed="true">
+                                    <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="value" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:choice>
+                                    <xs:attribute type="xs:string" name="name" use="required"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
-            </xs:sequence>
+
+                <xs:element name="envs">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="env" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType mixed="true">
+                                    <xs:attribute type="xs:string" name="name" use="required"/>
+                                    <xs:attribute type="xs:string" name="value" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
         </xs:complexType>
     </xs:element>
 
     <xs:simpleType name="related">
         <xs:restriction base="xs:string">
             <xs:enumeration value="file"/>
+            <xs:enumeration value="containingClass"/>
             <xs:enumeration value="directory"/>
             <xs:enumeration value="project"/>
             <xs:enumeration value="argument"/>
@@ -61,22 +77,107 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <!-- targets -->
+    <xs:element name="targets" abstract="true"/>
+    <xs:element name="classMethod" type="target-classMethod" substitutionGroup="targets"/>
+    <xs:element name="classConstructor" type="target-classConstructor" substitutionGroup="targets"/>
+    <xs:element name="function" type="target-function" substitutionGroup="targets"/>
+    <xs:element name="returnValue" type="target-returnValue" substitutionGroup="targets"/>
+
+    <xs:complexType name="target-returnValue">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:string" name="method" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="target-classMethod">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:string" name="method" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="target-classConstructor">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="target-function">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+    </xs:complexType>
+
+    <!-- features -->
+    <xs:element name="features" abstract="true"/>
+    <xs:element name="files" type="feature-files" substitutionGroup="features"/>
+    <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
+    <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
+    <xs:element name="arrayValues" type="feature-arrayValues" substitutionGroup="features"/>
+    <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
+    <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
+
+    <xs:complexType name="feature-files" mixed="true">
+        <xs:sequence>
+            <xs:element name="directoryProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+        <xs:attribute type="xs:string" name="extension" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-properties" mixed="true">
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
+        <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-methods" mixed="true">
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
+        <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-tables" mixed="true">
+        <xs:attribute type="xs:string" name="database" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="feature-collection" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-arrayValues" mixed="true">
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
+
     <!-- processors -->
 
     <xs:complexType name="processor-append">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="value"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="value"/>
     </xs:complexType>
 
     <xs:complexType name="processor-regexp">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="from" use="required"/>
-                <xs:attribute type="xs:string" name="to" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
+        <xs:attribute type="xs:string" name="from" use="required"/>
+        <xs:attribute type="xs:string" name="to" use="required"/>
     </xs:complexType>
 </xs:schema>
