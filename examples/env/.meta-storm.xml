@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Env\EnvReader" method="get" argument="0">
+            <collection name="GLOBAL:env" />
+        </classMethod>
+    </definitions>
+</meta-storm>
