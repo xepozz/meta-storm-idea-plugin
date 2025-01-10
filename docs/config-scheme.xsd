@@ -16,8 +16,6 @@
                             <xs:element type="target-function" name="function" maxOccurs="unbounded" minOccurs="0"/>
                             <xs:element type="target-classConstructor" name="classConstructor" maxOccurs="unbounded"
                                         minOccurs="0"/>
-                            <xs:element type="target-attributeConstructor" name="attributeConstructor" maxOccurs="unbounded"
-                                        minOccurs="0"/>
                             <xs:element type="target-classMethod" name="classMethod" maxOccurs="unbounded"
                                         minOccurs="0"/>
                         </xs:choice>
@@ -83,7 +81,6 @@
     <xs:element name="targets" abstract="true"/>
     <xs:element name="classMethod" type="target-classMethod" substitutionGroup="targets"/>
     <xs:element name="classConstructor" type="target-classConstructor" substitutionGroup="targets"/>
-    <xs:element name="attributeConstructor" type="target-attributeConstructor" substitutionGroup="targets"/>
     <xs:element name="function" type="target-function" substitutionGroup="targets"/>
     <xs:element name="returnValue" type="target-returnValue" substitutionGroup="targets"/>
 
@@ -103,13 +100,6 @@
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
     </xs:complexType>
     <xs:complexType name="target-classConstructor">
-        <xs:sequence>
-            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute type="xs:string" name="class" use="required"/>
-        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-    </xs:complexType>
-    <xs:complexType name="target-attributeConstructor">
         <xs:sequence>
             <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>

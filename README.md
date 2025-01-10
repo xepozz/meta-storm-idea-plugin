@@ -137,7 +137,7 @@ Mounts into the class method call.
 
 #### `classConstructor`
 
-Mounts into the class constructor call.
+Mounts into the class constructor call or the attribute definition call.
 
 | Parameter  | Required | Description                                           | Possible values      |
 |------------|----------|-------------------------------------------------------|----------------------|
@@ -151,24 +151,6 @@ Mounts into the class constructor call.
 <classConstructor class="\Framework\AttributeArgumentValueInterface" argument="0">
     <!-- features -->
 </classConstructor>
-```
-
-#### `attributeConstructor`
-
-Mounts into the attribute constructor call.
-
-| Parameter  | Required | Description                                           | Possible values      |
-|------------|----------|-------------------------------------------------------|----------------------|
-| `class`    | yes      | fully qualified class name                            | `\App\Helper\Arrays` |
-| `argument` | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...   |
-| children   | no       | [features](#features-overview)                        |                      | 
-
-##### Example
-
-```xml
-<attributeConstructor class="\Framework\Tag" argument="0">
-    <!-- features -->
-</attributeConstructor>
 ```
 
 #### `function`
