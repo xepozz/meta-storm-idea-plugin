@@ -10,6 +10,9 @@
         <classMethod class="\Framework\Container" method="getTag" argument="0">
             <collection name="tags" argument="0" />
         </classMethod>
+        <attributeConstructor class="\Framework\Tag" argument="0">
+            <collection name="tags" argument="0" />
+        </attributeConstructor>
         <classMethod class="\Framework\Client" method="__construct" argument="0">
             <collection name="tags" argument="0" />
         </classMethod>
