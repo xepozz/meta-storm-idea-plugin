@@ -137,7 +137,7 @@ Mounts into the class method call.
 
 #### `classConstructor`
 
-Mounts into the class constructor call.
+Mounts into the class constructor call or the attribute definition call.
 
 | Parameter  | Required | Description                                           | Possible values      |
 |------------|----------|-------------------------------------------------------|----------------------|
@@ -148,9 +148,7 @@ Mounts into the class constructor call.
 ##### Example
 
 ```xml
-<classConstructor
-        class="\Framework\AttributeArgumentValueInterface"
-        argument="0">
+<classConstructor class="\Framework\AttributeArgumentValueInterface" argument="0">
     <!-- features -->
 </classConstructor>
 ```
