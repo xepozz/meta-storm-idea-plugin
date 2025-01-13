@@ -189,6 +189,34 @@ Mounts into the returning value of the method.
 </returnValue>
 ```
 
+#### `files`
+
+Mounts into the files satisfied by xpath.
+
+| Parameter   | Required | Description                               | Possible values                 |
+|-------------|----------|-------------------------------------------|---------------------------------|
+| `xpath`     | yes      | xpath string to walk through the entities | `$project/resources/templates/` |
+| `extension` | no       | method name                               | `getValue`                      |
+| children    | no       | [features](#features-overview)            |                                 | 
+
+> **Note:** `files` target xpath work properly only with `$project` start point 
+
+##### Example
+
+All `*.php` files under `$project/resources/templates` directory
+```xml
+<files xpath="$project/resources/templates" extension=".php">
+  <!-- features -->
+</files>
+```
+
+Any files under `$project/resources/templates` directory
+```xml
+<files xpath="$project/resources/templates">
+  <!-- features -->
+</files>
+```
+
 ### Features Overview
 
 Once you configured target it's possible to inject one or many features into the mounting point.
@@ -277,6 +305,31 @@ Absolute directory lookup
 
 `directoryProcessors` is applied here as the children element.
 
+#### `directories`
+
+Provide directories only at the related filesystem point.
+
+| Parameter   | Required                | Description                                                    | Possible values                    |
+|-------------|-------------------------|----------------------------------------------------------------|------------------------------------|
+| `relatedTo` | no (if `xpath` set)     | relative point to lookup for entries                           | See [Related type](#relatedto)     |
+| `xpath`     | no (if `relatedTo` set) | xpath string to walk through the entities                      | See [Related type](#xpath)         |
+| children    | no                      | feature processors                                             |                                    | 
+
+##### Example
+
+Directory-related files
+```xml
+<directories relatedTo="directory"/>
+```
+Absolute directory lookup
+```xml
+<directories xpath="$project/resources/templates"/>
+```
+
+##### Processors
+
+`directoryProcessors` is applied here as the children element.
+
 #### `tables`
 
 Provide database table names.
@@ -290,6 +343,65 @@ Provide database table names.
 
 ```xml
 <tables />
+```
+
+#### `returnType`
+
+Overrides returning type by matching value alias.
+
+`returnType`:
+
+| Parameter  | Required | Description  | Possible values        |
+|------------|----------|--------------|------------------------|
+| children   | no       | aliases list |                        | 
+
+`alias`:
+
+| Parameter | Required | Description                                 | Possible values               |
+|-----------|----------|---------------------------------------------|-------------------------------|
+| `name`    | yes      | argument value matched returning class      | `int`, `user`                 | 
+| `class`   | yes      | fully qualified class name                  | `\IntResult`, `\UserFactory`  | 
+
+##### Example
+
+```xml
+<returnType>
+    <alias name="int" class="\IntResult" />
+    <alias name="string" class="\StringResult" />
+    <alias name="null" class="\NullResult" />
+    <alias name="object" class="\ObjectResult" />
+</returnType>
+```
+
+#### `variableInjection`
+
+Injects variable into the target.
+
+| Parameter | Required | Description                | Possible values                                          |
+|-----------|----------|----------------------------|----------------------------------------------------------|
+| `name`    | yes      | variable name              | `this`, `urlGenerator`                                   | 
+| `class`   | yes      | fully qualified class name | `\Framework\View\View`, `\Framework\Router\UrlGenerator` | 
+
+> **Note:** `variableInjection` feature works properly only with `files` target.
+
+##### Example
+
+```xml
+<variableInjection name="this" class="\Framework\View\View" />
+```
+
+#### `labgyageInjection`
+
+Injects language support into the target.
+
+| Parameter  | Required | Description             | Possible values        |
+|------------|----------|-------------------------|------------------------|
+| `language` | yes      | known PHPStorm language | `RegExp`, `CSS`, `SQL` | 
+
+##### Example
+
+```xml
+<labgyageInjection language="RegExp" />
 ```
 
 #### `collection`
@@ -307,6 +419,14 @@ Provide value from the [defined collections](#collections)
 ```xml
 <collection name="workflows_methods" argument="0" />
 ```
+
+#### Global collections
+
+| Name               | Description                                                                    | Example                |
+|--------------------|--------------------------------------------------------------------------------|------------------------|
+| `GLOBAL:html-tags` | Provides known html tags                                                       | `div`, `span`, `abbr`  |
+| `GLOBAL:env`       | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG` |
+
 
 ### Collections
 

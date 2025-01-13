@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\LangFactory" method="create" argument="0">
+            <returnType>
+                <alias name="int" class="\IntResult" />
+                <alias name="string" class="\StringResult" />
+                <alias name="null" class="\NullResult" />
+                <alias name="object" class="\ObjectResult" />
+            </returnType>
+        </classMethod>
+    </definitions>
+</meta-storm>
