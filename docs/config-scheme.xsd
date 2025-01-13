@@ -15,6 +15,7 @@
                             <xs:element name="function" type="target-function"/>
                             <xs:element name="returnValue" type="target-returnValue"/>
                             <xs:element name="files" type="target-files"/>
+                            <xs:element name="directories" type="target-directories"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
@@ -110,6 +111,13 @@
         <xs:attribute type="xs:string" name="xpath" use="required"/>
         <xs:attribute type="xs:string" name="extension" use="optional"/>
     </xs:complexType>
+    <xs:complexType name="target-directories">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+    </xs:complexType>
 
     <!-- features -->
     <xs:element name="features" abstract="true"/>
@@ -121,6 +129,7 @@
     <xs:element name="returnType" type="feature-returnType" substitutionGroup="features"/>
     <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
     <xs:element name="variableInjection" type="feature-variableInjection" substitutionGroup="features"/>
+    <xs:element name="languageInjection" type="feature-languageInjection" substitutionGroup="features"/>
 
     <xs:complexType name="feature-files" mixed="true">
         <xs:sequence>
@@ -184,6 +193,35 @@
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="class" use="required"/>
     </xs:complexType>
+    <xs:complexType name="feature-languageInjection" mixed="true">
+        <xs:attribute type="languages" name="language" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="languages">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HTML"/>
+            <xs:enumeration value="XHTML"/>
+            <xs:enumeration value="CSS"/>
+            <xs:enumeration value="PHP"/>
+            <xs:enumeration value="RegExp"/>
+            <xs:enumeration value="yaml"/>
+            <xs:enumeration value="XML"/>
+            <xs:enumeration value="JSON"/>
+            <xs:enumeration value="SQL"/>
+            <xs:enumeration value="Markdown"/>
+            <xs:enumeration value="Shell Script"/>
+            <xs:enumeration value="SVG"/>
+            <xs:enumeration value="$XSLT"/>
+            <xs:enumeration value="XPath"/>
+            <xs:enumeration value="XPath2"/>
+            <xs:enumeration value="Vertica"/>
+            <xs:enumeration value="DTD"/>
+            <xs:enumeration value="Dockerfile"/>
+            <xs:enumeration value="JavaScript"/>
+            <xs:enumeration value="JSRegexp"/>
+            <xs:enumeration value="HTTP Request"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- processors -->
 

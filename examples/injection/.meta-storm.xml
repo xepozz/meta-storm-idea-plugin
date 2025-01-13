@@ -4,5 +4,18 @@
         <files xpath="$project/examples/injection/templates">
             <variableInjection name="this" class="\Framework\View\View" />
         </files>
+        <classMethod class="\Framework\View\View" method="renderTag" argument="0">
+            <collection name="GLOBAL:html-tags" />
+        </classMethod>
+
+        <classMethod class="\LangControl" method="regexp" argument="0">
+            <languageInjection language="RegExp" />
+        </classMethod>
+        <classMethod class="\LangControl" method="css" argument="0">
+            <languageInjection language="CSS" />
+        </classMethod>
+        <classMethod class="\LangControl" method="html" argument="0">
+            <languageInjection language="HTML" />
+        </classMethod>
     </definitions>
 </meta-storm>

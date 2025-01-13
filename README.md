@@ -305,6 +305,31 @@ Absolute directory lookup
 
 `directoryProcessors` is applied here as the children element.
 
+#### `directories`
+
+Provide directories only at the related filesystem point.
+
+| Parameter   | Required                | Description                                                    | Possible values                    |
+|-------------|-------------------------|----------------------------------------------------------------|------------------------------------|
+| `relatedTo` | no (if `xpath` set)     | relative point to lookup for entries                           | See [Related type](#relatedto)     |
+| `xpath`     | no (if `relatedTo` set) | xpath string to walk through the entities                      | See [Related type](#xpath)         |
+| children    | no                      | feature processors                                             |                                    | 
+
+##### Example
+
+Directory-related files
+```xml
+<directories relatedTo="directory"/>
+```
+Absolute directory lookup
+```xml
+<directories xpath="$project/resources/templates"/>
+```
+
+##### Processors
+
+`directoryProcessors` is applied here as the children element.
+
 #### `tables`
 
 Provide database table names.
@@ -363,6 +388,20 @@ Injects variable into the target.
 
 ```xml
 <variableInjection name="this" class="\Framework\View\View" />
+```
+
+#### `labgyageInjection`
+
+Injects language support into the target.
+
+| Parameter  | Required | Description             | Possible values        |
+|------------|----------|-------------------------|------------------------|
+| `language` | yes      | known PHPStorm language | `RegExp`, `CSS`, `SQL` | 
+
+##### Example
+
+```xml
+<labgyageInjection language="RegExp" />
 ```
 
 #### `collection`
