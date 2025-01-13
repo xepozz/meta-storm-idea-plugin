@@ -17,5 +17,11 @@
         <classMethod class="\LangControl" method="html" argument="0">
             <languageInjection language="HTML" />
         </classMethod>
+        <classMethod class="\LangControl" method="php" argument="0">
+            <languageInjection language="PHP" />
+        </classMethod>
+        <classMethod class="\LangControl" method="sql" argument="0">
+            <languageInjection language="SQL" />
+        </classMethod>
     </definitions>
 </meta-storm>
