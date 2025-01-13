@@ -420,6 +420,14 @@ Provide value from the [defined collections](#collections)
 <collection name="workflows_methods" argument="0" />
 ```
 
+#### Global collections
+
+| Name               | Description                                                                    | Example                |
+|--------------------|--------------------------------------------------------------------------------|------------------------|
+| `GLOBAL:html-tags` | Provides known html tags                                                       | `div`, `span`, `abbr`  |
+| `GLOBAL:env`       | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG` |
+
+
 ### Collections
 
 Using collections helps to first define a set of values, prepare, filter and then use as definitions.
