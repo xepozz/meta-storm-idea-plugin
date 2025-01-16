@@ -13,13 +13,16 @@
         <function name="render" argument="0">
             <files relatedTo="directory" extension="" />
         </function>
-        <function name="renderThemed" argument="0">
+        <classMethod class="\Controller" method="renderThemed" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
                     <append value="examples/files/themes/${VIEW-THEME}" />
                 </directoryProcessors>
             </files>
-        </function>
+        </classMethod>
+        <classMethod class="\Controller" method="renderIcon" argument="0">
+            <files xpath="$directory" extension=""/>
+        </classMethod>
         <classMethod class="\Controller" method="xpath" argument="0">
             <files extension="php" xpath="$project/examples/files/views" />
         </classMethod>

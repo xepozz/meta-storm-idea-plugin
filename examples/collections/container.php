@@ -6,6 +6,6 @@ namespace App {
 
     $c = new Container;
     $command = $c->getCommand('');
-    $tag = $c->getTag('tag_logger');
+    $tag = $c->getTag('');
 
 }

@@ -2,26 +2,27 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <files xpath="$project/examples/injection/templates">
-            <variableInjection name="this" class="\Framework\View\View" />
+            <variableInjection name="this" class="\Framework\View\View"/>
         </files>
         <classMethod class="\Framework\View\View" method="renderTag" argument="0">
-            <collection name="GLOBAL:html-tags" />
+            <collection name="GLOBAL:html-tags"/>
         </classMethod>
 
+        <!-- language injection -->
         <classMethod class="\LangControl" method="regexp" argument="0">
-            <languageInjection language="RegExp" />
+            <languageInjection language="RegExp"/>
         </classMethod>
         <classMethod class="\LangControl" method="css" argument="0">
-            <languageInjection language="CSS" />
+            <languageInjection language="CSS"/>
         </classMethod>
         <classMethod class="\LangControl" method="html" argument="0">
-            <languageInjection language="HTML" />
+            <languageInjection language="HTML"/>
         </classMethod>
         <classMethod class="\LangControl" method="php" argument="0">
-            <languageInjection language="PHP" />
+            <languageInjection language="PHP"/>
         </classMethod>
         <classMethod class="\LangControl" method="sql" argument="0">
-            <languageInjection language="SQL" />
+            <languageInjection language="SQL"/>
         </classMethod>
     </definitions>
 </meta-storm>

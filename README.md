@@ -434,6 +434,21 @@ Using collections helps to first define a set of values, prepare, filter and the
 
 Collections can be merged. So it's possible to build a collection with different sources (attributes, yaml, json, php).
 
+All collections must be defined in the `collections` tag in the root xml tag:
+
+```xml
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <target>
+            <collection name="" /> // <-- there is only usage of the collection defined below
+        </target>
+    </definitions>
+    <collections>
+        ... // <-- there are collection definitions
+    </collections>
+</meta-storm>
+```
+
 
 #### `attributeClass`
 
@@ -443,13 +458,14 @@ Collects **attribute** from the attribute usage.
 |------------|----------|----------------------------------------------|------------------------------|
 | `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
 | `class`    | yes      | fully qualified attribute class name         | `\Attributes\AsCommand`      |
-| `argument` | yes      | position of the argument you want to collect | `0`, `1`, `2`, ...           |
-| children   | no       | feature processors                           |                              | 
 
 ##### Example
 
 ```xml
-<attributeArgument name="workflows_methods" argument="0" />
+<attributeClass
+        name="workflows_classes"
+        class="\Framework\ClassMarker"
+/>
 ```
 
 #### `attributeArgument`
@@ -460,22 +476,41 @@ Collects **argument** from the attribute usage.
 |------------|----------|----------------------------------------------|------------------------------|
 | `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
 | `class`    | yes      | fully qualified attribute class name         | `\Attributes\AsCommand`      |
-| children   | no       | feature processors                           |                              | 
+| `argument` | yes      | position of the argument you want to collect | `0`, `1`, `2`, ...           |
 
 ##### Example
 
 ```xml
-<attributeArgument name="workflows_methods" argument="0" />
+<attributeArgument
+        name="commands"
+        class="\Framework\Command"
+        argument="0"
+/>
+```
+
+#### `jsonFile`
+
+Collects keys from the json file.
+
+| Parameter  | Required | Description                               | Possible values                           |
+|------------|----------|-------------------------------------------|-------------------------------------------|
+| `name`     | yes      | collection name                           | `tags`, `cycle/orm:entities`              |
+| `xpath`    | yes      | xpath string to walk through the entities | `$project/resources/translations/en.json` |
+
+##### Example
+
+```xml
+<jsonFile name="translations" xpath="$directory/en.json" />
 ```
 
 #### `strings`
 
 Defines static strings from the current definition.
 
-| Parameter  | Required | Description                                  | Possible values              |
-|------------|----------|----------------------------------------------|------------------------------|
-| `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
-| children   | no       | feature processors                           |                              | 
+| Parameter  | Required | Description     | Possible values              |
+|------------|----------|-----------------|------------------------------|
+| `name`     | yes      | collection name | `tags`, `cycle/orm:entities` |
+| children   | no       | strings itself  |                              | 
 
 ##### Example
 

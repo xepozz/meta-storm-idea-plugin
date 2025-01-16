@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Flood\FloodControl" method="filterFlood" argument="0">
+            <collection name="strings1" />
+            <collection name="strings2" />
+            <stopCompletion />
+            <collection name="filtered" />
+        </classMethod>
+    </definitions>
+    <collections>
+        <strings name="strings1">
+            <value>foo</value>
+            <value>fork</value>
+        </strings>
+        <strings name="strings2">
+            <value>boo</value>
+            <value>bark</value>
+        </strings>
+        <strings name="filtered">
+            <value>fuu</value>
+            <value>fuck</value>
+        </strings>
+    </collections>
+</meta-storm>
