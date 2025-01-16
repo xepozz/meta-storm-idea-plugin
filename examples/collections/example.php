@@ -65,8 +65,8 @@ namespace App {
     $a = new #[ClassMarker] class {};
     $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
 
-    $client = new Client('');
-    $client->attributeArgumentValue();
+    $client = new Client('MyRenderer');
+    $client->attributeArgumentValue('workflow-type');
     $client->attributeClass()
 
 }

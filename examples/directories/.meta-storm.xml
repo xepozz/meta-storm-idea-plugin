@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Directories\DirectoryHelper" method="do" argument="0">
+            <directories xpath="$directory" />
+        </classMethod>
+    </definitions>
+</meta-storm>

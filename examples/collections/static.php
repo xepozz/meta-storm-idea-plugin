@@ -4,9 +4,9 @@ use Framework\Tag;
 
 $collector = new StaticCollector();
 
-$collector->suggest('');
+$collector->suggest('Hello');
 
-#[Tag('gge')]
+#[Tag('tag_logger')]
 class AttributeTester
 {
 

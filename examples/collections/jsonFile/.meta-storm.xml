@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Json\JsonReader" method="read" argument="0">
+            <collection name="jsons" />
+        </classMethod>
+    </definitions>
+    <collections>
+        <jsonFile name="jsons" xpath="$directory/en.json" />
+        <jsonFile name="jsons" xpath="$directory/es.json" />
+    </collections>
+</meta-storm>

@@ -63,6 +63,24 @@ ArrayHelper::getValue($a, 'age');
 
 > That was example how it works. Read the rest documentation to understand what you can do with the plugin.
 
+## Donation
+
+Open-source tools can greatly improve workflows, helping developers and businesses save time and increase revenue. 
+Many successful projects have been built on these tools, benefiting a wide community. 
+However, maintaining and enhancing these resources requires continuous effort and investment. 
+
+Support from the community helps keep these projects alive and ensures they remain useful for everyone. 
+Donations play a key role in sustaining and improving these open-source initiatives.
+
+Chose the best option for you to say thank you:
+
+[<img height="28" src="https://github.githubassets.com/assets/patreon-96b15b9db4b9.svg"> Patreon](https://patreon.com/xepozz)
+|
+[<img height="28" src="https://github.githubassets.com/assets/buy_me_a_coffee-63ed78263f6e.svg"> Buy me a coffee](https://buymeacoffee.com/xepozz) 
+|
+[<img height="28" src="https://boosty.to/favicon.ico"> Boosty](https://boosty.to/xepozz) 
+
+
 ## Configuration
 
 ### Configuration files
@@ -189,6 +207,34 @@ Mounts into the returning value of the method.
 </returnValue>
 ```
 
+#### `files`
+
+Mounts into the files satisfied by xpath.
+
+| Parameter   | Required | Description                               | Possible values                 |
+|-------------|----------|-------------------------------------------|---------------------------------|
+| `xpath`     | yes      | xpath string to walk through the entities | `$project/resources/templates/` |
+| `extension` | no       | method name                               | `getValue`                      |
+| children    | no       | [features](#features-overview)            |                                 | 
+
+> **Note:** `files` target xpath work properly only with `$project` start point 
+
+##### Example
+
+All `*.php` files under `$project/resources/templates` directory
+```xml
+<files xpath="$project/resources/templates" extension=".php">
+  <!-- features -->
+</files>
+```
+
+Any files under `$project/resources/templates` directory
+```xml
+<files xpath="$project/resources/templates">
+  <!-- features -->
+</files>
+```
+
 ### Features Overview
 
 Once you configured target it's possible to inject one or many features into the mounting point.
@@ -277,6 +323,31 @@ Absolute directory lookup
 
 `directoryProcessors` is applied here as the children element.
 
+#### `directories`
+
+Provide directories only at the related filesystem point.
+
+| Parameter   | Required                | Description                                                    | Possible values                    |
+|-------------|-------------------------|----------------------------------------------------------------|------------------------------------|
+| `relatedTo` | no (if `xpath` set)     | relative point to lookup for entries                           | See [Related type](#relatedto)     |
+| `xpath`     | no (if `relatedTo` set) | xpath string to walk through the entities                      | See [Related type](#xpath)         |
+| children    | no                      | feature processors                                             |                                    | 
+
+##### Example
+
+Directory-related files
+```xml
+<directories relatedTo="directory"/>
+```
+Absolute directory lookup
+```xml
+<directories xpath="$project/resources/templates"/>
+```
+
+##### Processors
+
+`directoryProcessors` is applied here as the children element.
+
 #### `tables`
 
 Provide database table names.
@@ -290,6 +361,65 @@ Provide database table names.
 
 ```xml
 <tables />
+```
+
+#### `returnType`
+
+Overrides returning type by matching value alias.
+
+`returnType`:
+
+| Parameter  | Required | Description  | Possible values        |
+|------------|----------|--------------|------------------------|
+| children   | no       | aliases list |                        | 
+
+`alias`:
+
+| Parameter | Required | Description                                 | Possible values               |
+|-----------|----------|---------------------------------------------|-------------------------------|
+| `name`    | yes      | argument value matched returning class      | `int`, `user`                 | 
+| `class`   | yes      | fully qualified class name                  | `\IntResult`, `\UserFactory`  | 
+
+##### Example
+
+```xml
+<returnType>
+    <alias name="int" class="\IntResult" />
+    <alias name="string" class="\StringResult" />
+    <alias name="null" class="\NullResult" />
+    <alias name="object" class="\ObjectResult" />
+</returnType>
+```
+
+#### `variableInjection`
+
+Injects variable into the target.
+
+| Parameter | Required | Description                | Possible values                                          |
+|-----------|----------|----------------------------|----------------------------------------------------------|
+| `name`    | yes      | variable name              | `this`, `urlGenerator`                                   | 
+| `class`   | yes      | fully qualified class name | `\Framework\View\View`, `\Framework\Router\UrlGenerator` | 
+
+> **Note:** `variableInjection` feature works properly only with `files` target.
+
+##### Example
+
+```xml
+<variableInjection name="this" class="\Framework\View\View" />
+```
+
+#### `labgyageInjection`
+
+Injects language support into the target.
+
+| Parameter  | Required | Description             | Possible values        |
+|------------|----------|-------------------------|------------------------|
+| `language` | yes      | known PHPStorm language | `RegExp`, `CSS`, `SQL` | 
+
+##### Example
+
+```xml
+<labgyageInjection language="RegExp" />
 ```
 
 #### `collection`
@@ -308,11 +438,34 @@ Provide value from the [defined collections](#collections)
 <collection name="workflows_methods" argument="0" />
 ```
 
+#### Global collections
+
+| Name               | Description                                                                    | Example                |
+|--------------------|--------------------------------------------------------------------------------|------------------------|
+| `GLOBAL:html-tags` | Provides known html tags                                                       | `div`, `span`, `abbr`  |
+| `GLOBAL:env`       | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG` |
+
+
 ### Collections
 
 Using collections helps to first define a set of values, prepare, filter and then use as definitions.
 
 Collections can be merged. So it's possible to build a collection with different sources (attributes, yaml, json, php).
+
+All collections must be defined in the `collections` tag in the root xml tag:
+
+```xml
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <target>
+            <collection name="" /> // <-- there is only usage of the collection defined below
+        </target>
+    </definitions>
+    <collections>
+        ... // <-- there are collection definitions
+    </collections>
+</meta-storm>
+```
 
 
 #### `attributeClass`
@@ -323,13 +476,14 @@ Collects **attribute** from the attribute usage.
 |------------|----------|----------------------------------------------|------------------------------|
 | `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
 | `class`    | yes      | fully qualified attribute class name         | `\Attributes\AsCommand`      |
-| `argument` | yes      | position of the argument you want to collect | `0`, `1`, `2`, ...           |
-| children   | no       | feature processors                           |                              | 
 
 ##### Example
 
 ```xml
-<attributeArgument name="workflows_methods" argument="0" />
+<attributeClass
+        name="workflows_classes"
+        class="\Framework\ClassMarker"
+/>
 ```
 
 #### `attributeArgument`
@@ -340,22 +494,41 @@ Collects **argument** from the attribute usage.
 |------------|----------|----------------------------------------------|------------------------------|
 | `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
 | `class`    | yes      | fully qualified attribute class name         | `\Attributes\AsCommand`      |
-| children   | no       | feature processors                           |                              | 
+| `argument` | yes      | position of the argument you want to collect | `0`, `1`, `2`, ...           |
 
 ##### Example
 
 ```xml
-<attributeArgument name="workflows_methods" argument="0" />
+<attributeArgument
+        name="commands"
+        class="\Framework\Command"
+        argument="0"
+/>
+```
+
+#### `jsonFile`
+
+Collects keys from the json file.
+
+| Parameter  | Required | Description                               | Possible values                           |
+|------------|----------|-------------------------------------------|-------------------------------------------|
+| `name`     | yes      | collection name                           | `tags`, `cycle/orm:entities`              |
+| `xpath`    | yes      | xpath string to walk through the entities | `$project/resources/translations/en.json` |
+
+##### Example
+
+```xml
+<jsonFile name="translations" xpath="$directory/en.json" />
 ```
 
 #### `strings`
 
 Defines static strings from the current definition.
 
-| Parameter  | Required | Description                                  | Possible values              |
-|------------|----------|----------------------------------------------|------------------------------|
-| `name`     | yes      | collection name                              | `tags`, `cycle/orm:entities` |
-| children   | no       | feature processors                           |                              | 
+| Parameter  | Required | Description     | Possible values              |
+|------------|----------|-----------------|------------------------------|
+| `name`     | yes      | collection name | `tags`, `cycle/orm:entities` |
+| children   | no       | strings itself  |                              | 
 
 ##### Example
 

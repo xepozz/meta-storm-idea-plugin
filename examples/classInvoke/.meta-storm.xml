@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classCallable class="\Callable\Invokable" argument="0">
+            <methods xpath="$variable" />
+            <collection name="for-callable" argument="0" />
+        </classCallable>
+    </definitions>
+    <collections>
+        <strings name="for-callable">
+            <value>callable</value>
+            <value>invokable</value>
+        </strings>
+    </collections>
+</meta-storm>
