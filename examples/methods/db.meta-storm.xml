@@ -2,9 +2,9 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\MethodFinder" method="getTables" argument="0">
-            <tables relatedTo="containingClass" relatedArgument="0" />
+            <tables database="identifier.sqlite" />
         </classMethod>
-        <returnValue class="\ActiveRecord" method="tableName" argument="0">
+        <returnValue class="\ActiveRecord" method="tableName">
             <methods relatedTo="containingClass" relatedArgument="0" static="false" />
         </returnValue>
     </definitions>
