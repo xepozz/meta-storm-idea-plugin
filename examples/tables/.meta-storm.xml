@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Database\Catalog" method="find" argument="0">
+            <tables database="identifier.sqlite" />
+        </classMethod>
+        <returnValue class="\Database\ActiveRecord" method="tableName">
+            <tables database="identifier.sqlite" />
+        </returnValue>
+    </definitions>
+</meta-storm>
