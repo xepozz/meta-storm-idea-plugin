@@ -198,6 +198,14 @@
         <xs:attribute type="xs:string" name="database" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-collection" mixed="true">
+        <xs:sequence>
+            <xs:element name="extractor" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="xpath" use="optional" default=""/>
+                    <xs:attribute type="xs:string" name="stopIfResolved" use="optional" default="false"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
     </xs:complexType>
