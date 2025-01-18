@@ -52,6 +52,7 @@ namespace App {
     {
         #[AttributeValueMarker('method-baaaaar2')]
         #[AttributeValueMarker('workflow-type')]
+        #[AttributeValueMarker]
         public function bar()
         {
             echo "test";
@@ -65,8 +66,8 @@ namespace App {
     $a = new #[ClassMarker] class {};
     $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
 
-    $client = new Client('MyRenderer');
-    $client->attributeArgumentValue('workflow-type');
+    $client = new Client('Foo');
+    $client->attributeArgumentValue('');
     $client->attributeClass()
 
 }
