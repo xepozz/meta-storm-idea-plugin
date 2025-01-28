@@ -1,0 +1,11 @@
+<meta-storm>
+    <definitions>
+        <classMethod
+                class="\Moonshine\Field"
+                method="method"
+                argument="0"
+        >
+            <arrayValues xpath="$containingClass.$model.$fillable" />
+        </classMethod>
+    </definitions>
+</meta-storm>

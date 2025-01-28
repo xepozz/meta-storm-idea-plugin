@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <classMethod class="\ArrayHelper" method="getPropertyValue" argument="1">
-            <properties relatedTo="argument" relatedArgument="0"/>
-        </classMethod>
         <classMethod class="\Framework\Container" method="getCommand" argument="0">
             <collection name="commands" argument="0" />
         </classMethod>
@@ -13,9 +10,9 @@
         <classConstructor class="\Framework\Tag" argument="0">
             <collection name="tags" argument="0" />
         </classConstructor>
-        <classMethod class="\Framework\Client" method="__construct" argument="0">
+        <classConstructor class="\Framework\Client" argument="0">
             <collection name="tags" argument="0" />
-        </classMethod>
+        </classConstructor>
         <classMethod class="\Framework\AttributeValueMarker" method="__construct" argument="0">
             <collection name="tags" argument="0" />
         </classMethod>

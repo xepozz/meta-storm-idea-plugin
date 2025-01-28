@@ -13,6 +13,15 @@
         <classConstructor class="\Framework\ClientInterface" argument="0">
             <collection name="workflows_classes" argument="0" />
         </classConstructor>
+        <classConstructor class="\Framework\Route" argument="1">
+            <collection name="GLOBAL:http-methods" />
+        </classConstructor>
+        <classConstructor class="\Framework\ClassReflection" argument="0">
+            <collection name="GLOBAL:php-classes" />
+        </classConstructor>
+        <classConstructor class="\Framework\InterfaceReflection" argument="0">
+            <collection name="GLOBAL:php-interfaces" />
+        </classConstructor>
     </definitions>
     <collections>
         <attributeArgument
