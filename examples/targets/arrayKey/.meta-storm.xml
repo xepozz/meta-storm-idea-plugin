@@ -1,0 +1,7 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classCallable class="\ArrayKey\Invokable" argument="0" targetValue="true" targetInArray="key">
+            <collection name="static_strings"/>
+        </classCallable>
+    </definitions>
+</meta-storm>

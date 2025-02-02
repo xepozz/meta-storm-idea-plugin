@@ -11,6 +11,7 @@
                     <xs:complexType>
                         <xs:choice maxOccurs="unbounded" minOccurs="0">
                             <xs:element name="classMethod" type="target-classMethod"/>
+                            <xs:element name="classProperty" type="target-classProperty"/>
                             <xs:element name="classConstructor" type="target-classConstructor"/>
                             <xs:element name="classCallable" type="target-classCallable"/>
                             <xs:element name="function" type="target-function"/>
@@ -82,6 +83,14 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="targetInArray">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="key"/>
+            <xs:enumeration value="value"/>
+            <xs:enumeration value="none"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:complexType name="target-returnValue">
         <xs:sequence>
             <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
@@ -96,6 +105,17 @@
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:string" name="method" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
+    </xs:complexType>
+    <xs:complexType name="target-classProperty">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:string" name="property" use="required"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-classConstructor">
         <xs:sequence>
@@ -103,6 +123,8 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-classCallable">
         <xs:sequence>
@@ -110,6 +132,8 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-function">
         <xs:sequence>
@@ -117,6 +141,8 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-files">
         <xs:sequence>
@@ -139,6 +165,7 @@
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
     <xs:element name="arrayValues" type="feature-arrayValues" substitutionGroup="features"/>
+    <xs:element name="arrayKeys" type="feature-arrayKeys" substitutionGroup="features"/>
     <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
     <xs:element name="returnType" type="feature-returnType" substitutionGroup="features"/>
     <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
@@ -184,6 +211,17 @@
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="feature-methods" mixed="true">
+        <xs:sequence>
+            <xs:element name="methodsProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
         <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
@@ -195,7 +233,7 @@
         <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-tables" mixed="true">
-        <xs:attribute type="xs:string" name="database" use="required"/>
+        <xs:attribute type="xs:string" name="database" use="optional" default=".+"/>
     </xs:complexType>
     <xs:complexType name="feature-collection" mixed="true">
         <xs:sequence>
@@ -210,6 +248,9 @@
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-arrayValues" mixed="true">
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="feature-arrayKeys" mixed="true">
         <xs:attribute type="xs:string" name="xpath" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-variableInjection" mixed="true">
