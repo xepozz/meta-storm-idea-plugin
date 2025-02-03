@@ -1,7 +1,29 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <classCallable class="\ArrayKey\Invokable" argument="0" targetValue="true" targetInArray="key">
-            <collection name="static_strings"/>
+        <classCallable class="\ArrayKey\Invokable" argument="0" targetValue="false" targetInArray="key">
+            <collection name="array-keys"/>
         </classCallable>
+        <classCallable class="\ArrayKey\Invokable" argument="0" targetValue="true" targetInArray="value">
+            <collection name="array-values"/>
+        </classCallable>
+        <classConstructor class="\ArrayKey\Invokable" argument="0" targetValue="true" targetInArray="value">
+            <collection name="array-values"/>
+        </classConstructor>
+        <classConstructor class="\ArrayKey\Invokable" argument="0" targetValue="false" targetInArray="key">
+            <collection name="array-keys"/>
+            <properties relatedTo="variable" />
+        </classConstructor>
     </definitions>
+    <collections>
+        <strings name="array-values">
+            <value>array-value1</value>
+            <value>array-value2</value>
+            <value>array-value3</value>
+        </strings>
+        <strings name="array-keys">
+            <value>array-key1</value>
+            <value>array-key2</value>
+            <value>array-key3</value>
+        </strings>
+    </collections>
 </meta-storm>
