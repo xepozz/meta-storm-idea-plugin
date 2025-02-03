@@ -11,5 +11,10 @@
             <value>Static</value>
             <value>World</value>
         </strings>
+        <strings name="static_strings">
+            <value>Hello</value>
+            <value>Static</value>
+            <value>World</value>
+        </strings>
     </collections>
 </meta-storm>

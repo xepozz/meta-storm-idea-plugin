@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\CollectionResolver" method="resolveMethod" argument="0">
+            <files xpath="$project/examples/arrayValues" />
+        </classMethod>
+    </definitions>
+</meta-storm>

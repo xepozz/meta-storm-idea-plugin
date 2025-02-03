@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\ActiveQuery\PostQuery" method="select" argument="0">
+            <properties xpath="$variable" />
+        </classMethod>
+
+        <classMethod class="\Demo" method="suggest" argument="0">
+            <collection name="static_strings"/>
+        </classMethod>
+    </definitions>
+</meta-storm>

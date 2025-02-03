@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\ArrayHelper" method="getPropertyValue" argument="1">
+            <properties relatedTo="argument" relatedArgument="0"/>
+        </classMethod>
+    </definitions>
+</meta-storm>
