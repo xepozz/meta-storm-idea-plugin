@@ -146,12 +146,14 @@ or [pull request](https://github.com/xepozz/meta-storm-idea-plugin/compare) with
 
 Mounts into the class method call.
 
-| Parameter  | Required | Description                                           | Possible values      |
-|------------|----------|-------------------------------------------------------|----------------------|
-| `class`    | yes      | fully qualified class name                            | `\App\Helper\Arrays` |
-| `method`   | yes      | method name                                           | `getValue`           |
-| `argument` | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...   |
-| children   | no       | [features](#features-overview)                        |                      | 
+| Parameter       | Required | Description                                           | Possible values        |
+|-----------------|----------|-------------------------------------------------------|------------------------|
+| `class`         | yes      | fully qualified class name                            | `\App\Helper\Arrays`   |
+| `method`        | yes      | method name                                           | `getValue`             |
+| `argument`      | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...     |
+| `targetValue`   | no       | should be used as direct value target (string)        | `true`, `false`        |
+| `targetInArray` | no       | position in array expression                          | `key`, `value`, `none` |
+| children        | no       | [features](#features-overview)                        |                        | 
 
 ##### Example
 
@@ -167,11 +169,13 @@ Mounts into the class method call.
 
 Mounts into the class constructor call or the attribute definition call.
 
-| Parameter  | Required | Description                                           | Possible values      |
-|------------|----------|-------------------------------------------------------|----------------------|
-| `class`    | yes      | fully qualified class name                            | `\App\Helper\Arrays` |
-| `argument` | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...   |
-| children   | no       | [features](#features-overview)                        |                      | 
+| Parameter       | Required | Description                                           | Possible values        |
+|-----------------|----------|-------------------------------------------------------|------------------------|
+| `class`         | yes      | fully qualified class name                            | `\App\Helper\Arrays`   |
+| `argument`      | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...     |
+| `targetValue`   | no       | should be used as direct value target (string)        | `true`, `false`        |
+| `targetInArray` | no       | position in array expression                          | `key`, `value`, `none` |
+| children        | no       | [features](#features-overview)                        |                        | 
 
 ##### Example
 
@@ -181,15 +185,57 @@ Mounts into the class constructor call or the attribute definition call.
 </classConstructor>
 ```
 
+#### `classCallable`
+
+Mounts into the class object invocation.
+
+| Parameter       | Required | Description                                           | Possible values        |
+|-----------------|----------|-------------------------------------------------------|------------------------|
+| `class`         | yes      | fully qualified class name                            | `\App\Helper\Arrays`   |
+| `argument`      | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...     |
+| `targetValue`   | no       | should be used as direct value target (string)        | `true`, `false`        |
+| `targetInArray` | no       | position in array expression                          | `key`, `value`, `none` |
+| children        | no       | [features](#features-overview)                        |                        | 
+
+##### Example
+
+```xml
+<classCallable class="\Framework\EventHandler" argument="0">
+    <!-- features -->
+</classCallable>
+```
+
+#### `classProperty`
+
+Mounts into the class property default value.
+
+| Parameter       | Required | Description                                    | Possible values              |
+|-----------------|----------|------------------------------------------------|------------------------------|
+| `class`         | yes      | fully qualified class name                     | `\App\Helper\Arrays`         |
+| `property`      | yes      | name of the property                           | `tableName`, `property`, ... |
+| `targetValue`   | no       | should be used as direct value target (string) | `true`, `false`              |
+| `targetInArray` | no       | position in array expression                   | `key`, `value`, `none`       |
+| children        | no       | [features](#features-overview)                 |                              | 
+
+##### Example
+
+```xml
+<classCallable class="\Framework\EventHandler" argument="0">
+    <!-- features -->
+</classCallable>
+```
+
 #### `function`
 
 Mounts into the function call.
 
-| Parameter  | Required | Description                                           | Possible values     |
-|------------|----------|-------------------------------------------------------|---------------------|
-| `name`     | yes      | function name                                         | `file_get_contents` |
-| `argument` | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...  |
-| children   | no       | [features](#features-overview)                        |                     | 
+| Parameter       | Required | Description                                           | Possible values        |
+|-----------------|----------|-------------------------------------------------------|------------------------|
+| `name`          | yes      | function name                                         | `file_get_contents`    |
+| `argument`      | yes      | position of the argument you want to make interactive | `0`, `1`, `2`, ...     |
+| `targetValue`   | no       | should be used as direct value target (string)        | `true`, `false`        |
+| `targetInArray` | no       | position in array expression                          | `key`, `value`, `none` |
+| children        | no       | [features](#features-overview)                        |                        | 
 
 ##### Example
 
@@ -362,10 +408,10 @@ Absolute directory lookup
 
 Provide database table names.
 
-| Parameter  | Required | Description        | Possible values        |
-|------------|----------|--------------------|------------------------|
-| `database` | yes      | database name      | `main`, `replica`, ... |
-| children   | no       | feature processors |                        | 
+| Parameter  | Required | Description                                 | Possible values   |
+|------------|----------|---------------------------------------------|-------------------|
+| `database` | yes      | connection exact name OR regular expression | `main`, `.+`, ... |
+| children   | no       | feature processors                          |                   | 
 
 ##### Example
 
@@ -450,11 +496,14 @@ Provide value from the [defined collections](#collections)
 
 #### Global collections
 
-| Name               | Description                                                                    | Example                |
-|--------------------|--------------------------------------------------------------------------------|------------------------|
-| `GLOBAL:html-tags` | Provides known html tags                                                       | `div`, `span`, `abbr`  |
-| `GLOBAL:env`       | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG` |
-
+| Name                    | Description                                                                    | Example                |
+|-------------------------|--------------------------------------------------------------------------------|------------------------|
+| `GLOBAL:html-tags`      | Provides known html tags                                                       | `div`, `span`, `abbr`  |
+| `GLOBAL:http-methods`   | Provides HTTP methods                                                          | `GET`, `POST`, `PUT`   |
+| `GLOBAL:php-classes`    | Provides php full qualified class names                                        | `div`, `span`, `abbr`  |
+| `GLOBAL:php-interfaces` | Provides php full qualified interface names                                    | `div`, `span`, `abbr`  |
+| `GLOBAL:php-functions`  | Provides php full qualified function names                                     | `div`, `span`, `abbr`  |
+| `GLOBAL:env`            | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG` |
 
 ### Collections
 
@@ -476,7 +525,6 @@ All collections must be defined in the `collections` tag in the root xml tag:
     </collections>
 </meta-storm>
 ```
-
 
 #### `attributeClass`
 
@@ -679,6 +727,24 @@ Converts `HelloWorld` to `Hello-World`
 Using `envs`:
 ```xml
 <regexp from="(${VIEW-THEME})" to="$1-${VIEW-THEME}"/>
+```
+
+#### `case`
+
+- Regular expression based processor, helps you to change directory, convert camelCase to snake_case and other
+- Parameters:
+    - `from`: **required**
+        - Regular expression
+    - `case`: **required**
+        - **lower**
+        - **upper**
+- `from` supports [envs](#envs) substitution
+
+###### Examples
+
+Converts `/MyPath/To/HelloWorld` to `/MyPath/To/helloworld`
+```xml
+<regexp from="[^/]+$" case="lower"/>
 ```
 
 #### `append`
