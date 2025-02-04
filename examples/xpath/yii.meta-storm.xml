@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Framework\QueryBuilder\Query" method="hasOne" argument="1" targetInArray="key">
+            <properties xpath="$argument"/>
+        </classMethod>
+        <classMethod class="\Framework\QueryBuilder\Query" method="hasOne" argument="1" targetInArray="value">
+            <properties xpath="$containingClass"/>
+        </classMethod>
+    </definitions>
+</meta-storm>
