@@ -220,9 +220,9 @@ Mounts into the class property default value.
 ##### Example
 
 ```xml
-<classCallable class="\Framework\EventHandler" argument="0">
+<classProperty class="\Framework\EventHandler" argument="0">
     <!-- features -->
-</classCallable>
+</classProperty>
 ```
 
 #### `function`
