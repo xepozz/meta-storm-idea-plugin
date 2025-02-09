@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <files xpath="$project/" extension="php">
+            <icon xpath="$project/examples/injection/icons/users.svg"/>
+        </files>
+    </definitions>
+</meta-storm>
