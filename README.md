@@ -220,7 +220,7 @@ Mounts into the class property default value.
 ##### Example
 
 ```xml
-<classProperty class="\Framework\EventHandler" argument="0">
+<classProperty class="\Framework\Entity" property="table">
     <!-- features -->
 </classProperty>
 ```
