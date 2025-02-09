@@ -105,7 +105,7 @@
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:string" name="method" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="true"/>
         <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-classProperty">
@@ -114,7 +114,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:string" name="property" use="required"/>
-        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="true"/>
         <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-classConstructor">
@@ -123,7 +123,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="true"/>
         <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-classCallable">
@@ -132,7 +132,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="true"/>
         <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-function">
@@ -141,7 +141,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:nonNegativeInteger" name="argument" use="required"/>
-        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="false"/>
+        <xs:attribute type="xs:boolean" name="targetValue" use="optional" default="true"/>
         <xs:attribute type="targetInArray" name="targetInArray" use="optional" default="none"/>
     </xs:complexType>
     <xs:complexType name="target-files">
@@ -172,6 +172,7 @@
     <xs:element name="variableInjection" type="feature-variableInjection" substitutionGroup="features"/>
     <xs:element name="languageInjection" type="feature-languageInjection" substitutionGroup="features"/>
     <xs:element name="stopCompletion" type="feature-stopCompletion" substitutionGroup="features"/>
+    <xs:element name="icon" type="feature-icon" substitutionGroup="features"/>
 
     <xs:complexType name="feature-files" mixed="true">
         <xs:sequence>
@@ -258,35 +259,12 @@
         <xs:attribute type="xs:string" name="class" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-languageInjection" mixed="true">
-        <xs:attribute type="languages" name="language" use="required"/>
+        <xs:attribute type="xs:string" name="language" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-stopCompletion" mixed="true"/>
-
-    <xs:simpleType name="languages">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="HTML"/>
-            <xs:enumeration value="XHTML"/>
-            <xs:enumeration value="CSS"/>
-            <xs:enumeration value="PHP"/>
-            <xs:enumeration value="RegExp"/>
-            <xs:enumeration value="yaml"/>
-            <xs:enumeration value="XML"/>
-            <xs:enumeration value="JSON"/>
-            <xs:enumeration value="SQL"/>
-            <xs:enumeration value="Markdown"/>
-            <xs:enumeration value="Shell Script"/>
-            <xs:enumeration value="SVG"/>
-            <xs:enumeration value="$XSLT"/>
-            <xs:enumeration value="XPath"/>
-            <xs:enumeration value="XPath2"/>
-            <xs:enumeration value="Vertica"/>
-            <xs:enumeration value="DTD"/>
-            <xs:enumeration value="Dockerfile"/>
-            <xs:enumeration value="JavaScript"/>
-            <xs:enumeration value="JSRegexp"/>
-            <xs:enumeration value="HTTP Request"/>
-        </xs:restriction>
-    </xs:simpleType>
+    <xs:complexType name="feature-icon" mixed="true">
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
 
     <!-- processors -->
 
