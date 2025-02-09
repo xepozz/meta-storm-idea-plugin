@@ -1,6 +1,7 @@
 <?php
 
 class CollectionA {
+//    public array $strings = 's';
     public array $strings = ['value1', 'value2', 'value3', 's' => 's'];
     public function publicMethodA() {}
     protected function protectedMethodA() {}

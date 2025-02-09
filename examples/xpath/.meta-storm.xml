@@ -7,7 +7,7 @@
         <classMethod class="\CollectionResolver" method="resolveProperty" argument="0">
             <properties xpath="$variable.$proxy.$original" />
         </classMethod>
-        <classProperty class="\CollectionA" property="strings" argument="0" targetInArray="key">
+        <classProperty class="\CollectionA" property="strings" targetInArray="key">
             <collection name="static_strings" />
         </classProperty>
     </definitions>

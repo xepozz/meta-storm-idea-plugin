@@ -21,7 +21,8 @@ class Controller extends BaseController
         (new self)->render('views/index.php');
         (new static)->render('views/index.php');
         $c->renderProject('index');
-        $c->renderThemed('dark');
+        $c->renderThemed('');
+        $c->renderAppend('');
         $c->renderIcon('icons/users.svg');
     }
 }
