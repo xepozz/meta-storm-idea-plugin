@@ -9,6 +9,7 @@
         </classMethod>
         <classMethod class="\Framework\ClientInterface" method="attributeClass" argument="0">
             <collection name="workflows_classes" argument="0" />
+            <stopCompletion />
         </classMethod>
         <classConstructor class="\Framework\ClientInterface" argument="0">
             <collection name="workflows_classes" argument="0" />

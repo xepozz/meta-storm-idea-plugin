@@ -3,7 +3,7 @@
     <definitions>
         <classCallable class="\Callable\Invokable" argument="0">
             <methods xpath="$variable" />
-            <collection name="for-callable" argument="0" />
+            <collection name="for-callable" />
         </classCallable>
     </definitions>
     <collections>

@@ -9,5 +9,10 @@
                 <alias name="object" class="\ObjectResult" />
             </returnType>
         </classMethod>
+        <classMethod class="\LangFactory" method="create" argument="1">
+            <returnType>
+                <alias name="int" class="\IntResult" />
+            </returnType>
+        </classMethod>
     </definitions>
 </meta-storm>
