@@ -66,8 +66,15 @@ namespace App {
     $a = new #[ClassMarker] class {};
     $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
 
+    $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){
+        $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){
+            $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){
+                $b = new #[ClassMarker] class {#[AttributeValueMarker('workflow-calc')]public function calc(){}};
+            }};
+        }};
+    }};
+
     $client = new Client('Foo');
     $client->attributeArgumentValue('');
-    $client->attributeClass()
-
+    $client->attributeClass();
 }
