@@ -2,10 +2,13 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\Database\Catalog" method="find" argument="0">
-            <tables database="identifier.sqlite" />
+            <tables database="identifier.sqlite"/>
         </classMethod>
         <returnValue class="\Database\ActiveRecord" method="tableName">
-            <tables database="identifier.sqlite" />
+            <tables database="identifier.sqlite"/>
+        </returnValue>
+        <returnValue class="\Database\ActiveRecord" method="columns">
+            <columns tableXpath="$containingClass.tableName()"/>
         </returnValue>
     </definitions>
 </meta-storm>
