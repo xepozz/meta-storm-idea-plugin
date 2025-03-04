@@ -1,0 +1,46 @@
+docs:
+  - title: Getting Started
+    children:
+      - title: "Quick-Start"
+        url: /quick-start
+      - title: "Installation"
+        url: /installation
+
+  - title: Configuration
+    children:
+      - title: "Overview"
+        url: /configuration
+      - title: "Features"
+        url: /features
+      - title: "Targets"
+        url: /targets
+      - title: "Collections"
+        url: /collections
+      - title: "Environment Variables"
+        url: /envs
+      - title: "Other"
+        url: /other
+
+  - title: Other
+    children:
+      - title: "XSD Schema"
+        url: /xsd-schema
+      - title: "Contact"
+        url: /contact
+      - title: "FAQ"
+        url: /faq
+      - title: "Troubleshooting"
+        url: /troubleshooting
+      - title: "Donation"
+        url: /donation
+
+main:
+  - title: "Quick Start"
+    url: "/quick-start"
+  - title: "Configuration"
+    url: "/configuration"
+  - title: "Support"
+    url: "/donation"
+  - title: "Github"
+    url: "https://github.com/xepozz/meta-storm-idea-plugin"
+    target: _blank
