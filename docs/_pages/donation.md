@@ -5,8 +5,8 @@ sidebar:
   nav: "docs"
 ---
 
-Support open-source development through donations:
+Support MetaStorm development through donations:
 
-- [Patreon](https://patreon.com/xepozz)
-- [Buy Me a Coffee](https://buymeacoffee.com/xepozz)
-- [Boosty](https://boosty.to/xepozz)
+- [<img height="28" src="https://github.githubassets.com/assets/patreon-96b15b9db4b9.svg"> Patreon](https://patreon.com/xepozz)
+- [<img height="28" src="https://github.githubassets.com/assets/buy_me_a_coffee-63ed78263f6e.svg"> Buy me a coffee](https://buymeacoffee.com/xepozz)
+- [<img height="28" src="https://boosty.to/favicon.ico"> Boosty](https://boosty.to/xepozz) 
