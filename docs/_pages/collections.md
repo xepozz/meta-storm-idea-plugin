@@ -26,16 +26,15 @@ Collections can be merged. So it's possible to build a collection with different
 All collections must be defined in the `collections` tag in the root xml tag:
 
 ```xml
-
 <meta-storm xmlns="meta-storm">
     <definitions>
         <target>
-            <collection name=""/>
-            //<-- there is only usage of the collection defined below
+            <collection name="collection-name" />
+            <!-- there are only usages of the collections defined below-->
         </target>
     </definitions>
     <collections>
-        ... //<-- there are collection definitions
+        <!-- there are collection definitions-->
     </collections>
 </meta-storm>
 ```
@@ -52,7 +51,6 @@ Collects **attribute** from the attribute usage.
 #### Example
 
 ```xml
-
 <attributeClass
         name="workflows_classes"
         class="\Framework\ClassMarker"
@@ -72,7 +70,6 @@ Collects **argument** from the attribute usage.
 #### Example
 
 ```xml
-
 <attributeArgument
         name="commands"
         class="\Framework\Command"
@@ -92,7 +89,6 @@ Collects keys from the json file.
 #### Example
 
 ```xml
-
 <jsonFile name="translations" xpath="$directory/en.json"/>
 ```
 
@@ -108,7 +104,6 @@ Defines static strings from the current definition.
 #### Example
 
 ```xml
-
 <strings name="static_strings">
     <value>Hello</value>
     <value>Static</value>
