@@ -20,9 +20,10 @@ class Controller extends BaseController
         $c->render('views/index.php');
         (new self)->render('views/index.php');
         (new static)->render('views/index.php');
-        $c->renderProject('index');
         $c->renderThemed('');
         $c->renderAppend('');
+        $c->renderAlias('@files/views/index');
+        $c->renderAlias('@root/examples/files/views/index');
         $c->renderIcon('icons/users.svg');
     }
 }

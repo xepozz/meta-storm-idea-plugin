@@ -17,7 +17,6 @@
                             <xs:element name="function" type="target-function"/>
                             <xs:element name="returnValue" type="target-returnValue"/>
                             <xs:element name="files" type="target-files"/>
-                            <xs:element name="directories" type="target-directories"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
@@ -151,17 +150,11 @@
         <xs:attribute type="xs:string" name="xpath" use="required"/>
         <xs:attribute type="xs:string" name="extension" use="optional"/>
     </xs:complexType>
-    <xs:complexType name="target-directories">
-        <xs:sequence>
-            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute type="related" name="relatedTo" use="optional"/>
-        <xs:attribute type="xs:string" name="xpath" use="optional"/>
-    </xs:complexType>
 
     <!-- features -->
     <xs:element name="features" abstract="true"/>
     <xs:element name="files" type="feature-files" substitutionGroup="features"/>
+    <xs:element name="directories" type="feature-directories" substitutionGroup="features"/>
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
     <xs:element name="arrayValues" type="feature-arrayValues" substitutionGroup="features"/>
@@ -169,6 +162,7 @@
     <xs:element name="methods" type="feature-methods" substitutionGroup="features"/>
     <xs:element name="returnType" type="feature-returnType" substitutionGroup="features"/>
     <xs:element name="tables" type="feature-tables" substitutionGroup="features"/>
+    <xs:element name="columns" type="feature-columns" substitutionGroup="features"/>
     <xs:element name="variableInjection" type="feature-variableInjection" substitutionGroup="features"/>
     <xs:element name="languageInjection" type="feature-languageInjection" substitutionGroup="features"/>
     <xs:element name="stopCompletion" type="feature-stopCompletion" substitutionGroup="features"/>
@@ -185,10 +179,43 @@
                     </xs:choice>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="valueProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
         <xs:attribute type="xs:string" name="extension" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-directories" mixed="true">
+        <xs:sequence>
+            <xs:element name="directoryProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="valueProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="related" name="relatedTo" use="optional"/>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-properties" mixed="true">
         <xs:attribute type="related" name="relatedTo" use="optional"/>
@@ -213,7 +240,17 @@
     </xs:complexType>
     <xs:complexType name="feature-methods" mixed="true">
         <xs:sequence>
+            <!-- deprecated-->
             <xs:element name="methodsProcessors" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="processor-regexp" name="regexp" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="valueProcessors" minOccurs="0">
                 <xs:complexType>
                     <xs:choice maxOccurs="unbounded">
                         <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
@@ -235,6 +272,9 @@
     </xs:complexType>
     <xs:complexType name="feature-tables" mixed="true">
         <xs:attribute type="xs:string" name="database" use="optional" default=".+"/>
+    </xs:complexType>
+    <xs:complexType name="feature-columns" mixed="true">
+        <xs:attribute type="xs:string" name="tableXpath" use="required"/>
     </xs:complexType>
     <xs:complexType name="feature-collection" mixed="true">
         <xs:sequence>
