@@ -20,6 +20,15 @@
                 </directoryProcessors>
             </files>
         </classMethod>
+        <classMethod class="Controller" method="renderAlias" argument="0">
+            <files extension="php" relatedTo="project" >
+                <valueProcessors>
+                    <regexp from="@files" to="examples/files" />
+                    <regexp from="@root" to="" />
+                </valueProcessors>
+            </files>
+            <collection name="path-aliases" />
+        </classMethod>
         <classMethod class="Controller" method="renderAppend" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
@@ -43,4 +52,10 @@
     <envs>
         <env name="VIEW-THEME" value="dark" />
     </envs>
+    <collections>
+        <strings name="path-aliases">
+            <value>@files</value>
+            <value>@root</value>
+        </strings>
+    </collections>
 </meta-storm>
