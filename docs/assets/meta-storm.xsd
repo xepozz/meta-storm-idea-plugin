@@ -300,6 +300,8 @@
     </xs:complexType>
     <xs:complexType name="feature-languageInjection" mixed="true">
         <xs:attribute type="xs:string" name="language" use="required"/>
+        <xs:attribute type="xs:string" name="prefix" use="optional"/>
+        <xs:attribute type="xs:string" name="suffix" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-stopCompletion" mixed="true"/>
     <xs:complexType name="feature-icon" mixed="true">
