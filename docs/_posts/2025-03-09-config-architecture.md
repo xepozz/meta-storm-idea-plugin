@@ -2,9 +2,9 @@
 title: "Configuration architecture"
 ---
 
-MetaStorm provides quite flexible architecture to reach your own goal for making IDE work on you.
+MetaStorm provides quite a flexible architecture to achieve your own goal of making the IDE work for you.
 
-Let's have a look at the configuration example from [the previous article](2025-03-07-introductory.md):
+Let's have a look at the configuration example from [the previous article]({{ site.baseurl }}{% post_url 2025-03-07-introductory %}):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -17,7 +17,7 @@ Let's have a look at the configuration example from [the previous article](2025-
 </meta-storm>
 ```
 
-Here what you can see:
+Here is what you can see:
 - Some XML metadata
 - Common root tag `<meta-storm>`
 - Tag `<definitions>` which groups all the definitions inside
@@ -25,10 +25,10 @@ Here what you can see:
 - Tag `<files>` with the configuration attributes, which means that files matched the configuration should be suggested
 - Closing tags
 
-So the architecture of the MetaStorm definitions configuration is pretty simple: 
+So, the architecture of the MetaStorm definitions configuration is pretty simple: 
 target (`<classMethod>`) and feature (`<files>`) composition.
 
-Based on that fact your might configure **several** features at the time:
+Based on that fact, you might configure **several** features at the same time
 
 ```xml
 <target>
@@ -40,13 +40,13 @@ Based on that fact your might configure **several** features at the time:
 
 They might be either features of the same name or different.
 
-> Btw, at future articles or instruction you might face with `<target>` and `<feature>` tags. 
-This does mean it doesn't much matter what target or feature should be used, highlighting an accent on the necessary things.
+> By the way, in future articles or instructions, you might encounter `<target>` and `<feature>` tags.
+> This means it doesn’t matter much what target or feature should be used, highlighting the necessary aspects.
 
 
 ### First beta
 
-Originally the first version of the MetaStorm had the following configs:
+Originally, the first version of MetaStorm had the following configs:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -62,11 +62,11 @@ Originally the first version of the MetaStorm had the following configs:
 </meta-storm>
 ```
 
-There were several ugly things that blocked the plugin internal architecture from reaching more and more 
-different **points to mount** combining with the features MetaStorm provides.
+There were several ugly things that blocked the plugin’s internal architecture from reaching more and more different points to mount, 
+combined with the features MetaStorm provides.
 
-Either each feature should have supported each target or configuration must be revised. 
-The last thing happened at the time and I really liked that it had happened before MetaStorm gained lots of functionality. 
+Either each feature should have supported each target, or the configuration had to be revised.
+The latter happened at the time, and I really liked that it happened before MetaStorm gained lots of functionality. 
 
 So now you are able to combine targets as you wish:
 - Each target knows only about itself
@@ -87,24 +87,25 @@ So now you are able to combine targets as you wish:
 </function>
 ```
 
-Try to combine all of these definitions to the original configuration version and imagine how it might be hard to support all of these feature and invert new.
+Try to combine all of these definitions with the original configuration version 
+and imagine how hard it might be to support all of these features and introduce new ones.
 
-The problem is similar to inheritance vs composition.
+The problem is similar to inheritance vs. composition.
 
 
 ## Silver bullet
 
-Current config architecture already has several limitations:
-- Unavailable to define several targets for one feature
-- Targets aren't be combined with another target: classMethod + arguments 0, 1, 2 + at value of array key "here"
-- Value changes back propagation: even replacing of regexp /[a-zA-Z]+/ to lowercase($1) cause combinatorial bomb
-- Both targets and features are language specific: you cannot specify target for \Namespace\MyClass because in javascript there are no namespaces, etc
+The current configuration architecture already has several limitations:
+- It is not possible to define multiple targets for a single feature
+- Targets cannot be combined with another target: classMethod + arguments 0, 1, 2 + at the value of array key “here”
+- Value change propagation: even replacing a regex like /[a-zA-Z]+/ with lowercase($1) causes a combinatorial explosion
+- Both targets and features are language-specific: you cannot specify a target for `\Namespace\MyClass` because, in JavaScript, there are no namespaces, etc
 
 ## Conclusion
 
-As every evolution think MetaStorm must go through several evolution upgrades.
+Like every evolving concept, MetaStorm must go through several evolutionary upgrades.
 
-Today MetaStorm is only 3 months old project which might bite several plugins in simplicity and flexibility. 
-I really hope that it would be popular as much as `.gitignore` files are. 
+Today, MetaStorm is only a 3-month-old project that might surpass several plugins in simplicity and flexibility.
+I really hope that it will become as popular as `.gitignore` files.
 
-You as a vendor are now available to control users IDE to make your users be more productive!
+You, as a vendor, can now control users’ IDEs to make them more productive.
