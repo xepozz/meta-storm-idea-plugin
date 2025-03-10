@@ -14,4 +14,16 @@ $control->css('div.class{display: flex;}');
 $control->html('div*5');
 $control->sql('select 1');
 $control->php('<?= "string" . random_int(1, 2);');
+$control->php('echo 123;');
+$control->php(<<<'TEXT'
+/**
+ * @re
+ */
+TEXT);
+$control->php("
+echo 123;
+");
+$control->php('
+echo 123;
+');
 $control->htmla('div*5');

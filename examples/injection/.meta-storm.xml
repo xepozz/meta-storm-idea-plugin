@@ -19,7 +19,7 @@
             <languageInjection language="HTML"/>
         </classMethod>
         <classMethod class="\LangControl" method="php" argument="0">
-            <languageInjection language="PHP"/>
+            <languageInjection language="InjectablePHP"/>
         </classMethod>
         <classMethod class="\LangControl" method="sql" argument="0">
             <languageInjection language="SQL"/>
