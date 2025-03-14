@@ -44,7 +44,7 @@ $file/../views
 
 ### XPath for `<methods>`, `<properties>`, `<arrayValues>`
 - A string used to walk through the programming entities: classes, methods, properties, constants, etc
-- XPath must be started from a relative point:
+- XPath must be a **FQCN** or started with a relative point:
     - `$containingClass` – means the class in which context the target is placed
     - `$argument` – related to the positioned argument: it's `$obj` in `$service->method($obj, $prop)`
     - `$variable` – related to the variable holding the method: it's `$service` in `$service->method()`
