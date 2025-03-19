@@ -39,6 +39,13 @@
         <classMethod class="\Controller" method="renderIcon" argument="0">
             <files xpath="$directory" extension=""/>
         </classMethod>
+        <classMethod class="\Controller" method="renderPrefixed" argument="0">
+            <files xpath="$project/examples/files/themes" extension="php">
+                <valueProcessors>
+                    <regexp from="dark-" to="dark/"/>
+                </valueProcessors>
+            </files>
+        </classMethod>
         <classMethod class="\Controller" method="xpath" argument="0">
             <files extension="php" xpath="$project/examples/files/views" />
         </classMethod>
