@@ -23,6 +23,7 @@ class Controller extends BaseController
         $c->renderThemed('');
         $c->renderAppend('');
         $c->renderAlias('@files/views/index');
+        $c->renderPrefixed('dark-index');
         $c->renderAlias('@root/examples/files/views/index');
         $c->renderIcon('icons/users.svg');
     }
