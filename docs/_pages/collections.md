@@ -14,12 +14,15 @@ Collections can be merged. So it's possible to build a collection with different
 
 | Name                    | Description                                                                    | Example                   |
 |-------------------------|--------------------------------------------------------------------------------|---------------------------|
+| `GLOBAL:env`            | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG`    |
+| `GLOBAL:mime-types`     | Provides IDE known Mime types                                                  | `application/json`        |
 | `GLOBAL:html-tags`      | Provides known html tags                                                       | `div`, `span`, `abbr`     |
 | `GLOBAL:http-methods`   | Provides HTTP methods                                                          | `GET`, `POST`, `PUT`      |
+| `GLOBAL:http-headers`   | Provides IDE known HTTP Headers                                                | `Accept`, `Content-Type`  |
 | `GLOBAL:php-classes`    | Provides php full qualified class names                                        | `\App\MyService`          |
 | `GLOBAL:php-interfaces` | Provides php full qualified interface names                                    | `\App\MyServiceInterface` |
+| `GLOBAL:php-traits`     | Provides php full qualified trait names                                        | `\App\Traits\Deletable`   |
 | `GLOBAL:php-functions`  | Provides php full qualified function names                                     | `time`, `user_function`   |
-| `GLOBAL:env`            | Provides collected ENV variables from `putenv` function calls and `.env` files | `APP_ENV`, `APP_DEBUG`    |
 
 ## Collection definition
 
