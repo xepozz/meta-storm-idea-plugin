@@ -22,12 +22,12 @@ namespace App {
     }
     /**
      * @property $id
-     * @property $user_id
+     * @property $post_id
      */
     class User extends Query {
         public function getPost()
         {
-            $this->hasOne(Post::class, ['id' => 'user_id']);
+            $this->hasOne(Post::class, ['id' => 'post_id']);
         }
     }
 }
