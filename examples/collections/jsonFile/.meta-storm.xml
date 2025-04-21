@@ -4,8 +4,22 @@
         <classMethod class="\Json\JsonReader" method="read" argument="0">
             <collection name="jsons"/>
         </classMethod>
+        <objectKeys xpath="">
+            <collection name="jsons"/>
+        </objectKeys>
+        <objectKeys xpath="/data">
+            <collection name="jsons"/>
+        </objectKeys>
+        <propertyValue xpath="/data/key3">
+            <collection name="t"/>
+        </propertyValue>
     </definitions>
     <collections>
+        <strings name="t">
+            <value>key1</value>
+            <value>key2</value>
+            <value>key3</value>
+        </strings>
         <jsonFile name="jsons" xpath="$directory/en.json"/>
         <jsonFile name="jsons" xpath="$directory/es.json"/>
         <jsonFile name="jsons" xpath="$directory/list.json"/>
