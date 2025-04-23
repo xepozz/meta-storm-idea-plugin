@@ -1,4 +1,5 @@
 <?php
+namespace App\Controller;
 
 class Controller extends BaseController
 {
@@ -15,6 +16,7 @@ class Controller extends BaseController
 
     public static function paint()
     {
+        view("views/index");
         $c = new self;
         $c->renderBlade("views/index");
         $c->render('views/index.php');

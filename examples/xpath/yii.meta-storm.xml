@@ -2,7 +2,7 @@
 <meta-storm xmlns="meta-storm">
     <definitions>
         <classMethod class="\Framework\QueryBuilder\Query" method="hasOne" argument="1" targetInArray="key">
-            <properties xpath="$argument"/>
+            <properties xpath="$argument[0]"/>
         </classMethod>
         <classMethod class="\Framework\QueryBuilder\Query" method="hasOne" argument="1" targetInArray="value">
             <properties xpath="$containingClass"/>

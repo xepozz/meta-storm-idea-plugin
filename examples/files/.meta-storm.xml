@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <classMethod class="\Controller" method="render" argument="0">
+        <classMethod class="\App\Controller\Controller" method="render" argument="0">
             <files relatedTo="directory" extension="" />
         </classMethod>
-        <classMethod class="\Controller" method="renderBlade" argument="0">
+        <classMethod class="\App\Controller\Controller" method="renderBlade" argument="0">
             <files xpath="$project/examples/files" extension="blade.php" />
         </classMethod>
-        <classMethod class="\Renderer" method="render" argument="0">
+        <classMethod class="\App\Controller\\Renderer" method="render" argument="0">
             <files relatedTo="directory" extension="" />
         </classMethod>
         <function name="render" argument="0">
             <files relatedTo="directory" extension="" />
         </function>
-        <classMethod class="Controller" method="renderThemed" argument="0">
+        <classMethod class="\App\Controller\Controller" method="renderThemed" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
                     <append value="examples/files/themes/${VIEW-THEME}" />
                 </directoryProcessors>
             </files>
         </classMethod>
-        <classMethod class="Controller" method="renderAlias" argument="0">
+        <classMethod class="\App\Controller\Controller" method="renderAlias" argument="0">
             <files extension="php" relatedTo="project" >
                 <valueProcessors>
                     <regexp from="@files" to="examples/files" />
@@ -29,30 +29,33 @@
             </files>
             <collection name="path-aliases" />
         </classMethod>
-        <classMethod class="Controller" method="renderAppend" argument="0">
+        <classMethod class="\App\Controller\Controller" method="renderAppend" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
                     <append value="examples/files/themes/" />
                 </directoryProcessors>
             </files>
         </classMethod>
-        <classMethod class="\Controller" method="renderIcon" argument="0">
+        <classMethod class="\App\Controller\Controller" method="renderIcon" argument="0">
             <files xpath="$directory" extension=""/>
         </classMethod>
-        <classMethod class="\Controller" method="renderPrefixed" argument="0">
+        <function name="view" argument="0">
+            <files xpath="$directory" extension="php"/>
+        </function>
+        <classMethod class="\App\Controller\Controller" method="renderPrefixed" argument="0">
             <files xpath="$project/examples/files/themes" extension="php">
                 <valueProcessors>
                     <regexp from="dark-" to="dark/"/>
                 </valueProcessors>
             </files>
         </classMethod>
-        <classMethod class="\Controller" method="xpath" argument="0">
+        <classMethod class="\App\Controller\Controller" method="xpath" argument="0">
             <files extension="php" xpath="$project/examples/files/views" />
         </classMethod>
-        <classMethod class="\Controller" method="xpathDir" argument="0">
+        <classMethod class="\App\Controller\Controller" method="xpathDir" argument="0">
             <files extension="php" xpath="$directory/views" />
         </classMethod>
-        <classMethod class="\Controller" method="xpathFile" argument="0">
+        <classMethod class="\App\Controller\Controller" method="xpathFile" argument="0">
             <files extension="php" xpath="$file/../views" />
         </classMethod>
     </definitions>
