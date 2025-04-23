@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Examples\Filter\Helper" method="help" argument="0">
+            <classes >
+                <filters>
+                    <instanceOf class="\Examples\Filter\ParentClass" />
+                </filters>
+            </classes>
+        </classMethod>
+    </definitions>
+</meta-storm>
