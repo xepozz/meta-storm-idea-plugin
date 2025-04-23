@@ -50,7 +50,7 @@
             </files>
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="xpath" argument="0">
-            <files extension="php" xpath="$project/examples/files/v" />
+            <files extension="php" xpath="$project/examples/files/views" />
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="xpathDir" argument="0">
             <files extension="php" xpath="$directory/views" />
