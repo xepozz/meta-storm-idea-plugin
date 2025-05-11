@@ -10,6 +10,7 @@
                 <xs:element name="definitions">
                     <xs:complexType>
                         <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="arrayAccess" type="target-arrayAccess"/>
                             <xs:element name="classMethod" type="target-classMethod"/>
                             <xs:element name="classProperty" type="target-classProperty"/>
                             <xs:element name="classConstructor" type="target-classConstructor"/>
@@ -129,6 +130,12 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="class" use="required"/>
         <xs:attribute type="xs:string" name="method" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="target-arrayAccess">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="class" use="required"/>
     </xs:complexType>
     <xs:complexType name="target-classMethod">
         <xs:sequence>
@@ -268,14 +275,7 @@
     </xs:complexType>
     <xs:complexType name="feature-classes" mixed="true">
         <xs:sequence>
-            <xs:element name="filters" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="filter-instanceOf" name="instanceOf" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="filter-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="namespaceDelimiter" use="optional" default="\"/>
         <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
@@ -284,7 +284,10 @@
         <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
         <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
     </xs:complexType>
-    <xs:complexType name="feature-properties" mixed="true">
+    <xs:complexType name="feature-properties">
+        <xs:sequence>
+            <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
         <xs:attribute type="xs:nonNegativeInteger" name="relatedArgument" use="optional"/>
@@ -307,6 +310,7 @@
     </xs:complexType>
     <xs:complexType name="feature-methods" mixed="true">
         <xs:sequence>
+            <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
             <!-- deprecated-->
             <xs:element name="methodsProcessors" minOccurs="0">
                 <xs:complexType>
@@ -400,11 +404,26 @@
 
     <!-- filters -->
 
+    <xs:complexType name="filters">
+        <xs:sequence>
+            <xs:element ref="php-filters"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="php-filters" abstract="true"/>
+    <xs:element name="regexp" type="filter-regexp" substitutionGroup="php-filters"/>
+    <xs:element name="instanceOf" type="filter-instanceOf" substitutionGroup="php-filters"/>
+    <xs:element name="hasAttribute" type="filter-hasAttribute" substitutionGroup="php-filters"/>
+
     <xs:complexType name="filter-regexp">
         <xs:attribute type="xs:string" name="pattern" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="filter-instanceOf">
+        <xs:attribute type="xs:string" name="class" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="filter-hasAttribute">
         <xs:attribute type="xs:string" name="class" use="required"/>
     </xs:complexType>
 </xs:schema>

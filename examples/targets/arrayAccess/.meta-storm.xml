@@ -1,0 +1,8 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <arrayAccess class="\ArrayAccess\Params">
+            <collection name="array-keys"/>
+            <properties xpath="$variable" />
+        </arrayAccess>
+    </definitions>
+</meta-storm>
