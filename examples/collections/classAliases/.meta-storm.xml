@@ -1,0 +1,15 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\ClassAliases\Aliases" method="resolve" argument="0">
+            <collection name="classes-aliases" />
+        </classMethod>
+    </definitions>
+    <collections>
+        <classAliases name="classes-aliases">
+            <alias value="dt" class="\DateTime"/>
+            <alias value="random" class="\Random\Randomizer"/>
+            <alias value="aliases" class="\ClassAliases\Aliases"/>
+            <alias value="aliases2" class="\ClassAliases\Aliases"/>
+        </classAliases>
+    </collections>
+</meta-storm>
