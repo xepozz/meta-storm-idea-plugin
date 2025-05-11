@@ -1,0 +1,16 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod
+                class="\Translator\Translator"
+                method="translate"
+                argument="0"
+        >
+            <collection name="translations" >
+                <extractor xpath="/xliff/file/body/trans-unit/@id" />
+            </collection>
+        </classMethod>
+    </definitions>
+    <collections>
+        <xmlFile name="translations" xpath="$project/examples/xml/xlf.xlf" />
+    </collections>
+</meta-storm>
