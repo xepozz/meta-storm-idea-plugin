@@ -11,4 +11,4 @@ class Helper
     public static function help(string $class) {}
 }
 
-Helper::help('');
+Helper::help('Examples\Filter\Child2');

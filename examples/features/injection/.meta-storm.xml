@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <meta-storm xmlns="meta-storm">
     <definitions>
-        <files xpath="$project/examples/injection/templates">
+        <files xpath="$project/examples/features/injection/templates">
             <variableInjection name="this" class="\Framework\View\View"/>
         </files>
         <classMethod class="\Framework\View\View" method="renderTag" argument="0">

@@ -5,9 +5,9 @@
             <files relatedTo="directory" extension="" />
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="renderBlade" argument="0">
-            <files xpath="$project/examples/files" extension="blade.php" />
+            <files xpath="$project/examples/features/files" extension="blade.php" />
         </classMethod>
-        <classMethod class="\App\Controller\\Renderer" method="render" argument="0">
+        <classMethod class="\App\Controller\Renderer" method="render" argument="0">
             <files relatedTo="directory" extension="" />
         </classMethod>
         <function name="render" argument="0">
@@ -16,14 +16,14 @@
         <classMethod class="\App\Controller\Controller" method="renderThemed" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
-                    <append value="examples/files/themes/${VIEW-THEME}" />
+                    <append value="examples/features/files/themes/${VIEW-THEME}" />
                 </directoryProcessors>
             </files>
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="renderAlias" argument="0">
             <files extension="php" relatedTo="project" >
                 <valueProcessors>
-                    <regexp from="@files" to="examples/files" />
+                    <regexp from="@files" to="examples/features/files" />
                     <regexp from="@root" to="" />
                 </valueProcessors>
             </files>
@@ -32,7 +32,7 @@
         <classMethod class="\App\Controller\Controller" method="renderAppend" argument="0">
             <files extension="php" relatedTo="project" >
                 <directoryProcessors>
-                    <append value="examples/files/themes/" />
+                    <append value="examples/features/files/themes/" />
                 </directoryProcessors>
             </files>
         </classMethod>
@@ -43,14 +43,14 @@
             <files xpath="$directory" extension="php"/>
         </function>
         <classMethod class="\App\Controller\Controller" method="renderPrefixed" argument="0">
-            <files xpath="$project/examples/files/themes" extension="php">
+            <files xpath="$project/examples/features/files/themes" extension="php">
                 <valueProcessors>
                     <regexp from="dark-" to="dark/"/>
                 </valueProcessors>
             </files>
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="xpath" argument="0">
-            <files extension="php" xpath="$project/examples/files/views" />
+            <files extension="php" xpath="$project/examples/features/files/views" />
         </classMethod>
         <classMethod class="\App\Controller\Controller" method="xpathDir" argument="0">
             <files extension="php" xpath="$directory/views" />

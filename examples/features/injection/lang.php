@@ -26,4 +26,4 @@ echo 123;
 $control->php('
 echo 123;
 ');
-$control->htmla('div*5');
+$control->html('div*5');

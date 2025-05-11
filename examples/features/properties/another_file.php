@@ -13,5 +13,5 @@ $b = [
 ];
 
 ArrayHelper::getPropertyValue($a, 'age');
-ArrayHelper::getPropertyValue($a, 'age');
+ArrayHelper::getPropertyValue($as, 'age');
 ArrayHelper::getPropertyValue($b, 'key');

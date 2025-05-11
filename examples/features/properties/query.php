@@ -16,5 +16,5 @@ namespace ActiveQuery {
         static function find(): PostQuery{}
     }
 
-    Post::find()->select('p');
+    Post::find()->select('prop2');
 }

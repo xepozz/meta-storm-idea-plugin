@@ -3,6 +3,7 @@
     <definitions>
         <classMethod class="\ArrayHelper" method="getPropertyValue" argument="1">
             <properties relatedTo="argument" relatedArgument="0"/>
+            <arrayKeys xpath="$argument[0]" />
         </classMethod>
     </definitions>
 </meta-storm>

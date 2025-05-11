@@ -18,15 +18,15 @@ class Controller extends BaseController
     {
         view("views/index");
         $c = new self;
-        $c->renderBlade("views/index");
+        $c->renderBlade('views/index');
         $c->render('views/index.php');
         (new self)->render('views/index.php');
         (new static)->render('views/index.php');
-        $c->renderThemed('');
-        $c->renderAppend('');
+        $c->renderThemed('index');
+        $c->renderAppend('dark/index');
         $c->renderAlias('@files/views/index');
         $c->renderPrefixed('dark-index');
-        $c->renderAlias('@root/examples/files/views/index');
+        $c->renderAlias('@root/examples/features/files/views/index');
         $c->renderIcon('icons/users.svg');
     }
 }
