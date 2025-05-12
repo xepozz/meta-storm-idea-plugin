@@ -1,0 +1,17 @@
+# Employee records
+developers:
+  - xepozz:
+      name: Dmitrii Derepko
+      job: Developer
+      skills:
+        - php
+        - kotlin
+
+  - linus:
+      name: Linus Torvalds
+      job: Developer
+      skills:
+        - linux
+        - c
+        - swear words
+

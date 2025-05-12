@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: example
+  template:
+    metadata:
+      app.kubernetes.io/name: example
+    spec:
+      containers:
+        - name: container 1
+        - name: container 2
+        - name: container 3
