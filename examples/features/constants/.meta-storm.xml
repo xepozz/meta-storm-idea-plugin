@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Constants\Dictionary" method="lookup" argument="0">
+            <constants xpath="$variable" public="false">
+                <filters>
+                    <regexp pattern=".+\d$"/>
+                </filters>
+            </constants>
+        </classMethod>
+    </definitions>
+</meta-storm>

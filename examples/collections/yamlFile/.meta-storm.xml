@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Yaml\YamlReader" method="read" argument="0">
+            <collection name="yaml-xpath">
+                <extractor xpath="//containers/name"/>
+            </collection>
+        </classMethod>
+    </definitions>
+    <collections>
+        <yamlFile name="yaml-xpath" xpath="$directory/xpath.yaml"/>
+    </collections>
+</meta-storm>

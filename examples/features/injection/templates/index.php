@@ -5,7 +5,7 @@
 
 $a = new \Framework\View\View;
 $a->renderFile();
-$f->renderFile('');
+$f->renderFile('e');
 $this->renderFile('', []);
 function a(\Framework\View\View $fff)
 {

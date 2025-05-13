@@ -13,12 +13,12 @@ namespace Database {
     {
         public static function tableName()
         {
-            return 'table_name1';
+            return 'sqlite_master';
         }
 
         public static function columns()
         {
-            return 'i';
+            return 'type';
         }
     }
 }

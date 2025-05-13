@@ -1,0 +1,12 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Modx\Modx" method="getObject" argument="0">
+            <collection name="xml-source" >
+                <extractor xpath="/model/object/@class" />
+            </collection>
+        </classMethod>
+    </definitions>
+    <collections>
+        <xmlFile name="xml-source" xpath="$project/examples/xml/source.xml" />
+    </collections>
+</meta-storm>

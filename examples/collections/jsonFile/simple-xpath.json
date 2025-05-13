@@ -1,0 +1,7 @@
+{
+  "key": "value",
+  "array": ["val1", "val2"],
+  "obj": {
+    "key": "obj-key-value"
+  }
+}
