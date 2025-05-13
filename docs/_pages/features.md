@@ -34,12 +34,33 @@ Provide properties of the related class.
 | `private`         | no                      | show or hide such properties                               | `true`, `false`                |
 | `static`          | no                      | show or hide such properties                               | `true`, `false`                |
 | `dynamic`         | no                      | show or hide such properties                               | `true`, `false`                |
+| `promoted`        | no                      | show or hide such properties                               | `true`, `false`                |
+| `phpdoc`          | no                      | show or hide such properties                               | `true`, `false`                |
+| `regular`         | no                      | show or hide such properties                               | `true`, `false`                |
 | children          | no                      | feature processors                                         |                                | 
 
 ### Example
 
 ```xml
-<properties relatedTo="argument" relatedArgument="0"/>
+<properties xpath="$argument[0]" />
+```
+
+## `constants`
+
+Provide constants of the related class.
+
+| Parameter         | Required | Description                                                | Possible values                |
+|-------------------|----------|------------------------------------------------------------|--------------------------------|
+| `xpath`           | yes      | xpath string to walk through the entities                  | See [Related type](#xpath)     |
+| `public`          | no       | show or hide such properties                               | `true`, `false`                |
+| `protected`       | no       | show or hide such properties                               | `true`, `false`                |
+| `private`         | no       | show or hide such properties                               | `true`, `false`                |
+| children          | no       | feature processors                                         |                                | 
+
+### Example
+
+```xml
+<constants xpath="$variable" />
 ```
 
 ## `methods`
@@ -80,7 +101,7 @@ Provide files and directories at the related filesystem point.
 
 Directory-related files
 ```xml
-<files extension="" relatedTo="directory"/>
+<files extension="" xpath="$directory"/>
 ```
 Absolute directory lookup
 ```xml
@@ -105,7 +126,7 @@ Provide directories only at the related filesystem point.
 
 Directory-related files
 ```xml
-<directories relatedTo="directory"/>
+<directories xpath="$directory"/>
 ```
 Absolute directory lookup
 ```xml

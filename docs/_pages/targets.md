@@ -127,6 +127,23 @@ Mounts into the returning value of the method.
 </returnValue>
 ```
 
+## `arrayAccess`
+
+Mounts into the variable array access position: `$var['here']'`
+
+| Parameter  | Required | Description                                      | Possible values      |
+|------------|----------|--------------------------------------------------|----------------------|
+| `class`    | yes      | fully qualified class name, type of the variable | `\App\Helper\Arrays` |
+| children   | no       | [features](#features-overview)                   |                      | 
+
+### Example
+
+```xml
+<arrayAccess class="\ArrayAccess\Params">
+    <!-- features -->
+</arrayAccess>
+```
+
 ## `files`
 
 Mounts into the files satisfied by xpath.

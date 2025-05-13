@@ -74,6 +74,50 @@ Could be chained any number of times
 $variable.$a.$b.$c.$d.methoA().methodB()
 ```
 
+## Values extractor
+- Defines as `<extractor>` element of a file collection usage
+- Supported in `<xmlFile>`, `<yamlFile>`, `<jsonFile>`
+- `xpath` attribute is a string used to walk through the programming entities: tags, elements, attributes, properties, sequencies, depending on the file language
+- XPath implements logic similar to https://developer.mozilla.org/en-US/docs/Web/XML/XPath
+
+### Examples
+
+Config
+```xml
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Modx\Modx" method="getObject" argument="0">
+            <collection name="xml-source" >
+                <extractor xpath="/model/object/@class" />
+            </collection>
+        </classMethod>
+    </definitions>
+    <collections>
+        <xmlFile name="xml-source" xpath="$project/examples/xml/source.xml" />
+    </collections>
+</meta-storm>
+```
+
+Data
+```xml
+<model>
+    <object class="modAccess">
+        <field key="target" />
+    </object>
+
+    <object class="modAccessActionDom"/>
+</model>
+```
+
+Xpath `/model/object/@class` selects all `class` attributes' values in each `object` tag in each `model` root tag
+
+Result:
+```
+modAccess
+modAccessActionDom
+```
+
+
 # Processors
 
 ## `regexp`
