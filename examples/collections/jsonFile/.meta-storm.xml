@@ -6,6 +6,11 @@
                 <extractor xpath="//book[price<10]/price"/>
             </collection>
         </classMethod>
+        <classMethod class="\Json\JsonReader" method="keys" argument="0">
+            <collection name="json-xpath">
+                <extractor xpath="keys(//*)"/>
+            </collection>
+        </classMethod>
         <objectKeys xpath="/data">
             <collection name="jsons"/>
         </objectKeys>
