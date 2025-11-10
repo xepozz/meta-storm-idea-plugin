@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\Examples\Processor\Helper" method="toController" argument="0">
+            <classes>
+                <valueProcessors>
+                    <regexp from="Examples\\Processor\\" to="" />
+                    <regexp from="Controller" to="" />
+                </valueProcessors>
+            </classes>
+        </classMethod>
+        <classMethod class="\Examples\Processor\Helper" method="toController2" argument="0">
+            <collection name="actions" />
+        </classMethod>
+    </definitions>
+    <collections>
+        <classes name="actions">
+            <valueProcessors>
+                <regexp from="Examples\\Processor\\" to="" />
+                <regexp from="Controller" to="" />
+            </valueProcessors>
+        </classes>
+    </collections>
+</meta-storm>
