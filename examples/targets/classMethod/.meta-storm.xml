@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\ClassMethod\Target" method="method" argument="0">
+            <properties xpath="$variable" />
+        </classMethod>
+        <classMethod class="\ClassMethod\HasProperty" method="has" argument="0">
+            <properties xpath="$variable" />
+        </classMethod>
+    </definitions>
+</meta-storm>

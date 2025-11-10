@@ -9,6 +9,8 @@ class Controller extends BaseController
         $this->render('views/index.php');
     }
 
+    public function renderBlade(string $view){}
+
     private function render(string $view)
     {
         $this->renderer->render($view);
