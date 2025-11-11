@@ -10,9 +10,11 @@ namespace Arrays {
     class ArrayValues
     {
         public array $strings = ['value1', 'value2', 'value5', 77, 10 => ['inner 1']];
+
+        public function get(string $value) {}
     }
 
 
     $resolver = new ArrayValues();
-    $resolver->gett('');
+    $resolver->get('value1');
 }
