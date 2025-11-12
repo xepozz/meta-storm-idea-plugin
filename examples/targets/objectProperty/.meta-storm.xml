@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod class="\ObjectProperty\Entity" method="factory" argument="0">
+            <returnType>
+                <alias name="Topic2" class="\ObjectProperty\Topic_Model" />
+                <collection name="orm-relations"/>
+            </returnType>
+        </classMethod>
+    </definitions>
+    <collections>
+        <classAliases name="orm-relations">
+            <alias value="Topic" class="\ObjectProperty\Topic_Model"/>
+            <alias value="Author" class="\ObjectProperty\Author_Model"/>
+            <alias value="Author_Metadata" class="\ObjectProperty\Author_Metadata_Model"/>
+        </classAliases>
+    </collections>
+</meta-storm>
