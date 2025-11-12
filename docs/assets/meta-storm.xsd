@@ -27,64 +27,15 @@
 
                 <xs:element name="collections">
                     <xs:complexType>
-                        <xs:choice maxOccurs="unbounded">
-                            <xs:element name="attributeArgument" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                    <xs:attribute type="xs:string" name="class" use="required"/>
-                                    <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="attributeClass" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                    <xs:attribute type="xs:string" name="class" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="classes" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:sequence>
-                                        <xs:element name="filters" minOccurs="0">
-                                            <xs:complexType>
-                                                <xs:choice maxOccurs="unbounded">
-                                                    <xs:element type="filter-instanceOf" name="instanceOf" minOccurs="0"
-                                                                maxOccurs="unbounded"/>
-                                                    <xs:element type="filter-regexp" name="regexp" minOccurs="0"
-                                                                maxOccurs="unbounded"/>
-                                                </xs:choice>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                    <xs:attribute type="xs:string" name="namespaceDelimiter" use="optional"
-                                                  default="\"/>
-                                    <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
-                                    <xs:attribute type="xs:boolean" name="final" default="true" use="optional"/>
-                                    <xs:attribute type="xs:boolean" name="readonly" default="true" use="optional"/>
-                                    <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
-                                    <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="jsonFile" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                    <xs:attribute type="xs:string" name="xpath" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="xmlFile" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                    <xs:attribute type="xs:string" name="xpath" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="strings" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType mixed="true">
-                                    <xs:choice maxOccurs="unbounded">
-                                        <xs:element name="value" minOccurs="0" maxOccurs="unbounded"/>
-                                    </xs:choice>
-                                    <xs:attribute type="xs:string" name="name" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="attributeArgument" type="collection-attributeArgument"/>
+                            <xs:element name="attributeClass" type="collection-attributeClass"/>
+                            <xs:element name="classes" type="collection-classes"/>
+                            <xs:element name="jsonFile" type="collection-jsonFile"/>
+                            <xs:element name="yamlFile" type="collection-yamlFile"/>
+                            <xs:element name="xmlFile" type="collection-xmlFile"/>
+                            <xs:element name="strings" type="collection-strings"/>
+                            <xs:element name="classAliases" type="collection-classAliases"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
@@ -206,12 +157,21 @@
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
     </xs:complexType>
 
+    <!-- yaml targets -->
+    <xs:complexType name="target-yaml" mixed="true">
+        <xs:sequence>
+            <xs:element ref="features" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="xpath" use="optional"/>
+    </xs:complexType>
+
     <!-- features -->
     <xs:element name="features" abstract="true"/>
     <xs:element name="files" type="feature-files" substitutionGroup="features"/>
     <xs:element name="directories" type="feature-directories" substitutionGroup="features"/>
     <xs:element name="classes" type="feature-classes" substitutionGroup="features"/>
     <xs:element name="properties" type="feature-properties" substitutionGroup="features"/>
+    <xs:element name="constants" type="feature-constants" substitutionGroup="features"/>
     <xs:element name="collection" type="feature-collection" substitutionGroup="features"/>
     <xs:element name="arrayValues" type="feature-arrayValues" substitutionGroup="features"/>
     <xs:element name="arrayKeys" type="feature-arrayKeys" substitutionGroup="features"/>
@@ -226,24 +186,8 @@
 
     <xs:complexType name="feature-files" mixed="true">
         <xs:sequence>
-            <xs:element name="directoryProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="valueProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="directoryProcessors" type="processors" minOccurs="0"/>
+            <xs:element name="valueProcessors" type="processors" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
@@ -251,24 +195,8 @@
     </xs:complexType>
     <xs:complexType name="feature-directories" mixed="true">
         <xs:sequence>
-            <xs:element name="directoryProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="valueProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="directoryProcessors" type="processors" minOccurs="0"/>
+            <xs:element name="valueProcessors" type="processors" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
@@ -276,6 +204,7 @@
     <xs:complexType name="feature-classes" mixed="true">
         <xs:sequence>
             <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="valueProcessors" type="processors" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="namespaceDelimiter" use="optional" default="\"/>
         <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
@@ -296,6 +225,18 @@
         <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
         <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
         <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="promoted" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="phpdoc" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="regular" default="true" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="feature-constants">
+        <xs:sequence>
+            <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+        <xs:attribute type="xs:boolean" name="public" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="protected" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="private" default="true" use="optional"/>
     </xs:complexType>
     <xs:complexType name="feature-returnType" mixed="true">
         <xs:sequence>
@@ -311,25 +252,7 @@
     <xs:complexType name="feature-methods" mixed="true">
         <xs:sequence>
             <xs:element name="filters" type="filters" minOccurs="0" maxOccurs="unbounded"/>
-            <!-- deprecated-->
-            <xs:element name="methodsProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="valueProcessors" minOccurs="0">
-                <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
-                        <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:choice>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="valueProcessors" type="processors" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute type="related" name="relatedTo" use="optional"/>
         <xs:attribute type="xs:string" name="xpath" use="optional"/>
@@ -379,9 +302,81 @@
         <xs:attribute type="xs:string" name="xpath" use="required"/>
     </xs:complexType>
 
+    <!-- collections -->
+
+    <xs:complexType name="collection-attributeArgument" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+        <xs:attribute type="xs:nonNegativeInteger" name="argument" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-attributeClass" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="class" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-classes" mixed="true">
+        <xs:sequence>
+            <xs:element name="filters" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element type="filter-instanceOf" name="instanceOf" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element type="filter-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="valueProcessors" type="processors" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="namespaceDelimiter" use="optional" default="\"/>
+        <xs:attribute type="xs:boolean" name="abstract" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="final" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="readonly" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="static" default="true" use="optional"/>
+        <xs:attribute type="xs:boolean" name="dynamic" default="true" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-jsonFile" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-yamlFile" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-xmlFile" mixed="true">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="xpath" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-strings" mixed="true">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="value" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="collection-classAliases" mixed="true">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="alias" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="value" use="required"/>
+                    <xs:attribute type="xs:string" name="class" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+    </xs:complexType>
+
     <!-- processors -->
 
     <xs:complexType name="processor-append">
+        <xs:attribute type="xs:string" name="value"/>
+    </xs:complexType>
+
+    <xs:complexType name="processor-prepend">
         <xs:attribute type="xs:string" name="value"/>
     </xs:complexType>
 
@@ -408,6 +403,15 @@
         <xs:sequence>
             <xs:element ref="php-filters"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="processors">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element type="processor-case" name="case" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="processor-append" name="append" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="processor-prepend" name="prepend" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="processor-regexp" name="regexp" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
     </xs:complexType>
 
     <xs:element name="php-filters" abstract="true"/>
