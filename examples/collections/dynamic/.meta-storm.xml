@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <function name="dyn" argument="0">
+            <collection name="dyna" />
+        </function>
+    </definitions>
+    <collections>
+        <dynamic name="dyna" xpath="$directory/run.php" />
+    </collections>
+</meta-storm>
