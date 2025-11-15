@@ -5,5 +5,5 @@ namespace Env {
     class EnvReader { public function get(string $name){ } }
 
     $reader = new EnvReader();
-    $reader->get('SHELL_VERBOSITY');
+    $reader->get('META_STORM');
 }

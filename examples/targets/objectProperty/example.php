@@ -6,6 +6,7 @@ class Entity {
 }
 
 /**
+ * @property string $topic_id
  * @property Author_Model $AuthorModel
  */
 class Topic_Model extends Entity {
@@ -25,13 +26,17 @@ Class Author_Model {
     );
 }
 
+/**
+ * @property Topic_Model $topic
+ */
 class Author_Metadata_Model {
     public $id;
 }
 
 $topic = Entity::factory('Topic'); // is Site_Model
+$topic->authors->Author_Metadata->topic->topic_id;
 
-$authors = $topic->authors; // is Author_Model[]
+$authors = $topic->authors->Author_Metadata; // is Author_Model[]
 
 $author = Entity::factory('Author');
 $author->Author_Metadata->id;

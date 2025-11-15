@@ -7,11 +7,17 @@
                 <collection name="orm-relations"/>
             </returnType>
         </classMethod>
+        <objectProperties class="\ObjectProperty\Topic_Model">
+            <returnType>
+                <collection name="orm-relations"/>
+            </returnType>
+        </objectProperties>
     </definitions>
     <collections>
         <classAliases name="orm-relations">
             <alias value="Topic" class="\ObjectProperty\Topic_Model"/>
             <alias value="Author" class="\ObjectProperty\Author_Model"/>
+            <alias value="authors" class="\ObjectProperty\Author_Model"/>
             <alias value="Author_Metadata" class="\ObjectProperty\Author_Metadata_Model"/>
         </classAliases>
     </collections>
