@@ -9,6 +9,17 @@ class Controller extends BaseController
         $this->render('views/index.php');
     }
 
+    public function renderBlade(string $view){}
+    public function renderThemed(string $view){}
+    public function renderAppend(string $view){}
+    public function renderAlias(string $view){}
+    public function renderPrefixed(string $view){}
+    public function renderIcon(string $view){}
+
+    public function xpath(string $view){}
+    public function xpathDir(string $view){}
+    public function xpathFile(string $view){}
+
     private function render(string $view)
     {
         $this->renderer->render($view);
@@ -55,3 +66,5 @@ class BaseController
 {
     protected Renderer $renderer;
 }
+
+function view(string $value) {}

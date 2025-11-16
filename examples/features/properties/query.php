@@ -14,7 +14,15 @@ namespace ActiveQuery {
     {
         public $prop2 = null;
         static function find(): PostQuery{}
+        static function do(): PostQuery{}
     }
 
     Post::find()->select('prop2');
+
+    /**
+     * @var $post PostQuery|Post
+     */
+    $post = Post::find();
+
+    $post->select('');
 }

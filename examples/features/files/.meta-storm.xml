@@ -39,7 +39,7 @@
         <classMethod class="\App\Controller\Controller" method="renderIcon" argument="0">
             <files xpath="$directory" extension=""/>
         </classMethod>
-        <function name="view" argument="0">
+        <function name="\App\Controller\view" argument="0">
             <files xpath="$directory" extension="php"/>
         </function>
         <classMethod class="\App\Controller\Controller" method="renderPrefixed" argument="0">

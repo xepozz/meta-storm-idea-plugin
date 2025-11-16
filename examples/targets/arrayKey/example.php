@@ -3,7 +3,7 @@
 namespace ArrayKey {
     class Invokable {
         public $var1;
-        public function __invoke(array $name){}
+        public function __invoke(array|string $name){}
     }
 
 

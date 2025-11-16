@@ -16,7 +16,7 @@ namespace Moonshine {
         public function fields(): array
         {
             return [
-                (new Field())->ff("ss")
+                (new Field())->method('name')
             ];
         }
     }

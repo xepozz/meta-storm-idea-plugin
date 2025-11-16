@@ -17,10 +17,12 @@ class CollectionResolver {
     public CollectionProxy $proxy;
     public string $proxyClass = CollectionProxy::class;
 
+    public function resolveMethod(string $value) {}
+    public function resolveProperty(string $value) {}
     public function testResolver() {}
 }
 
 
 $resolver = new CollectionResolver();
 $resolver->resolveMethod('privateMethodA');
-$resolver->resolveProperty('');
+$resolver->resolveProperty('strings');

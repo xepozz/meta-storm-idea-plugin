@@ -1,0 +1,11 @@
+<meta-storm xmlns="meta-storm">
+    <definitions>
+        <classMethod
+                class="\Generic\ModelOf"
+                method="suggest"
+                argument="0"
+        >
+            <methods xpath="$variable" />
+        </classMethod>
+    </definitions>
+</meta-storm>
